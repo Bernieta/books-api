@@ -43,6 +43,9 @@ lerna-debug.log*
 .env.production.local
 .env.local
 
+package-lock.json
+pnpm-lock.yaml
+
 # temp directory
 .temp
 .tmp
