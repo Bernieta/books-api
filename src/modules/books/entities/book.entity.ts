@@ -1,5 +1,6 @@
 import { CustomEntity } from '../../../database/entities/custom.entity';
-import { Column, Entity } from 'typeorm';
+import { Column, Entity, JoinColumn, ManyToOne } from 'typeorm';
+import { Gender } from '../../genders/entities/gender.entity';
 
 @Entity('books')
 export class Book extends CustomEntity {
@@ -24,4 +25,7 @@ export class Book extends CustomEntity {
   @Column()
   publicationDate: Date;
 
+  @ManyToOne(() => Gender, (gender) => gender.books)
+  @JoinColumn({ name: 'gender_id' })
+  gender: Gender;
 }

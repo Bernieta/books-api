@@ -1,34 +1,55 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+  ParseIntPipe,
+  HttpCode,
+  HttpStatus,
+  Put,
+} from '@nestjs/common';
 import { UsersService } from './users.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
+import { httpResponse } from '../../config/response';
 
 @Controller('users')
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
 
-  @Post()
-  create(@Body() createUserDto: CreateUserDto) {
-    return this.usersService.create(createUserDto);
-  }
-
   @Get()
-  findAll() {
-    return this.usersService.findAll();
+  public async findAll() {
+    const users = await this.usersService.findAll();
+    return httpResponse('Successfully', HttpStatus.OK, users);
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.usersService.findOne(+id);
+  public async findById(@Param('id', ParseIntPipe) id: number) {
+    const user = await this.usersService.findById(id);
+    return httpResponse('Successfully', HttpStatus.OK, user);
   }
 
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateUserDto: UpdateUserDto) {
-    return this.usersService.update(+id, updateUserDto);
+  @Post()
+  @HttpCode(HttpStatus.CREATED)
+  public async create(@Body() userDto: CreateUserDto) {
+    const user = await this.usersService.create(userDto);
+    return httpResponse('Created', HttpStatus.CREATED, user);
+  }
+
+  @Put(':id')
+  public async update(
+    @Param('id', ParseIntPipe) id: number,
+    @Body() userDto: UpdateUserDto,
+  ) {
+    return this.usersService.update(id, userDto);
   }
 
   @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.usersService.remove(+id);
+  @HttpCode(HttpStatus.NO_CONTENT)
+  public async delete(@Param('id', ParseIntPipe) id: number) {
+    await this.usersService.delete(id);
   }
 }

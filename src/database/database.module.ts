@@ -16,7 +16,7 @@ import { ConfigType } from '@nestjs/config';
         database: configService.database.databaseName,
         entities: [`${__dirname}/../modules/**/*.entity{.ts,.js}`],
         synchronize: true,
-        logging: true,
+        logging: false,
         namingStrategy: new SnakeNamingStrategy(),
       }),
       inject: [config.KEY],

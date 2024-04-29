@@ -1,26 +1,59 @@
-import { Injectable } from '@nestjs/common';
+import {
+  ConflictException,
+  Injectable,
+  NotFoundException,
+} from '@nestjs/common';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
+import { InjectRepository } from '@nestjs/typeorm';
+import { User } from './entities/user.entity';
+import { Repository } from 'typeorm';
+import { Roles } from './types/roles';
 
 @Injectable()
 export class UsersService {
-  create(createUserDto: CreateUserDto) {
-    return 'This action adds a new user';
+  constructor(
+    @InjectRepository(User) private readonly userRepository: Repository<User>,
+  ) {}
+
+  public async findAll() {
+    const users = await this.userRepository.find();
+    if (!users.length)
+      throw new NotFoundException('There are no registered users');
+    return users;
   }
 
-  findAll() {
-    return `This action returns all users`;
+  public async findById(id: number) {
+    const user = await this.userRepository.findOne({ where: { id } });
+    if (!user)
+      throw new NotFoundException(`The user with id = ${id} not exist`);
+    return user;
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} user`;
+  public async findByEmail(email: string) {
+    return await this.userRepository.findOne({ where: { email } });
   }
 
-  update(id: number, updateUserDto: UpdateUserDto) {
-    return `This action updates a #${id} user`;
+  public async create(userDto: CreateUserDto) {
+    const user = await this.findByEmail(userDto.email);
+    if (user)
+      throw new ConflictException(
+        `The user with email ${userDto.email} already exist`,
+      );
+    const newUser = this.userRepository.create(userDto);
+    newUser.role = userDto.role ?? Roles.CUSTOMER;
+    return await this.userRepository.save(newUser);
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} user`;
+  public async update(id: number, userDto: UpdateUserDto) {
+    const user = await this.findById(id);
+    const userMerge = this.userRepository.merge(user, userDto);
+    return await this.userRepository.save(userMerge);
+  }
+
+  public async delete(id: number) {
+    const { affected } = await this.userRepository.delete(id);
+    if (!affected)
+      throw new NotFoundException(`The user with id = ${id} not exist`);
   }
 }
