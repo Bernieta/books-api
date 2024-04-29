@@ -9,11 +9,11 @@ import { ConfigType } from '@nestjs/config';
     TypeOrmModule.forRootAsync({
       useFactory: (configService: ConfigType<typeof config>) => ({
         type: 'postgres',
-        host: configService.database.databaseHost,
-        port: configService.database.databasePort,
-        username: configService.database.databaseUsername,
-        password: configService.database.databasePassword,
-        database: configService.database.databaseName,
+        host: configService.database.host,
+        port: configService.database.port,
+        username: configService.database.username,
+        password: configService.database.password,
+        database: configService.database.name,
         entities: [`${__dirname}/../modules/**/*.entity{.ts,.js}`],
         synchronize: true,
         logging: false,
