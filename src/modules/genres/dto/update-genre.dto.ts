@@ -1,10 +1,10 @@
 import { IsNotEmpty, IsOptional, IsString } from 'class-validator';
 
-export class UpdateGenderDto {
+export class UpdateGenreDto {
   @IsOptional()
   @IsNotEmpty()
   @IsString()
-  genderName: string;
+  genreName: string;
 
   @IsOptional()
   @IsNotEmpty()

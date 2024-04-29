@@ -2,10 +2,10 @@ import { CustomEntity } from '../../../database/entities/custom.entity';
 import { Column, Entity, OneToMany } from 'typeorm';
 import { Book } from '../../books/entities/book.entity';
 
-@Entity('genders')
-export class Gender extends CustomEntity {
+@Entity('genres')
+export class Genre extends CustomEntity {
   @Column()
-  genderName: string;
+  genreName: string;
 
   @Column({ type: 'text' })
   image: string;
