@@ -10,6 +10,6 @@ export class Genre extends CustomEntity {
   @Column({ type: 'text' })
   image: string;
 
-  @OneToMany(() => Book, (book) => book.gender)
+  @OneToMany(() => Book, (book) => book.genre)
   books: Book[];
 }

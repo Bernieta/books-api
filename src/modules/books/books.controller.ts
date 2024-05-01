@@ -1,34 +1,56 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+  HttpStatus,
+  ParseIntPipe,
+  HttpCode,
+  Put,
+} from '@nestjs/common';
 import { BooksService } from './books.service';
 import { CreateBookDto } from './dto/create-book.dto';
 import { UpdateBookDto } from './dto/update-book.dto';
+import { httpResponse } from '../../config/response';
 
 @Controller('books')
 export class BooksController {
   constructor(private readonly booksService: BooksService) {}
 
-  @Post()
-  create(@Body() createBookDto: CreateBookDto) {
-    return this.booksService.create(createBookDto);
-  }
-
   @Get()
-  findAll() {
-    return this.booksService.findAll();
+  public async findAll() {
+    const books = await this.booksService.findAll();
+    return httpResponse('Successfully', HttpStatus.OK, books);
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.booksService.findOne(+id);
+  public async findById(@Param('id', ParseIntPipe) id: number) {
+    const book = await this.booksService.findById(id);
+    return httpResponse('Successfully', HttpStatus.OK, book);
   }
 
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateBookDto: UpdateBookDto) {
-    return this.booksService.update(+id, updateBookDto);
+  @Post()
+  @HttpCode(HttpStatus.CREATED)
+  public async create(@Body() bookDto: CreateBookDto) {
+    const book = await this.booksService.create(bookDto);
+    return httpResponse('Created', HttpStatus.CREATED, book);
+  }
+
+  @Put(':id')
+  public async update(
+    @Param('id', ParseIntPipe) id: number,
+    @Body() bookDto: UpdateBookDto,
+  ) {
+    const book = await this.booksService.update(id, bookDto);
+    return httpResponse('Successfully', HttpStatus.OK, book);
   }
 
   @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.booksService.remove(+id);
+  @HttpCode(HttpStatus.NO_CONTENT)
+  public async remove(@Param('id', ParseIntPipe) id: number) {
+    await this.booksService.delete(id);
   }
 }

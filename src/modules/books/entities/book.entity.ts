@@ -27,5 +27,5 @@ export class Book extends CustomEntity {
 
   @ManyToOne(() => Genre, (genre) => genre.books)
   @JoinColumn({ name: 'genre_id' })
-  gender: Genre;
+  genre: Genre;
 }
