@@ -50,4 +50,4 @@ ldmeenknekncnnnnnnnnnnnnnnnnnnnnnnnnnnnnnndndakkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk
     | pagesNumber     | number      | Número de páginas del libro    |
     | editorial       | string      | Nombre de la editorial         |
     | publicationDate | Date        | Fecha de publicación del libro |
-    | imagen          | string      | Cadena de la URL dr la imágen  |
+    | image           | string      | Cadena de la URL dr la imágen  |
