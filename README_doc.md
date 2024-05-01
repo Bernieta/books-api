@@ -1,4 +1,4 @@
-# Fake Books Api
+# Books Api
 
 ## Introducción
 
@@ -14,6 +14,7 @@ Books Api es una API REST pública que contiene información sobre libros de var
 ldmeenknekncnnnnnnnnnnnnnnnnnnnnnnnnnnnnnndndakkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk
 
 * ### Esquema Base
+  Este esquema es extendido por los demas esquemas.
 
     | Atributo   | Type | Descripción            |
     |------------|------|------------------------|
