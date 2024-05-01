@@ -9,11 +9,11 @@ Books Api es una API REST pública que contiene información sobre libros de var
 * [Usuarios](#)
 * [Auth JWT](#)
 
-## Esquemas
+## Entidades
 
 ldmeenknekncnnnnnnnnnnnnnnnnnnnnnnnnnnnnnndndakkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk
 
-* ### Esquema Base
+* ### Entidad Base
   Este esquema es extendido por los demas esquemas.
 
     | Atributo   | Type | Descripción            |
@@ -22,7 +22,7 @@ ldmeenknekncnnnnnnnnnnnnnnnnnnnnnnnnnnnnnndndakkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk
     | createdAt  |Date  | Fecha de creación      |
     | updateedAt |Date  | Fecha de actualización |
 
-* ## Esquema de Usuarios
+* ## Entidad de Usuarios
 
     | Atributo   | Type        | Descripción                   |
     |------------|-------------|-------------------------------|
@@ -32,14 +32,14 @@ ldmeenknekncnnnnnnnnnnnnnnnnnnnnnnnnnnnnnndndakkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk
     | password   | string      | Contraseña del usuario        |
     | avatar     | string      | Cadena de la URL de la imágen |
 
-* ## Esquema de Generos
+* ## Entidad de Generos
 
     | Atributo   | Type   | Descripción                   |
     |------------|--------|-------------------------------|
     | genderName | string | Nombre del genero             |
     | image      | string | Cadena de la URL de la imágen |
 
-* ## Esquema de Libros
+* ## Entidad de Libros
 
     | Atributo        | Type        | Descripción                    |
     |-----------------|-------------|--------------------------------|
@@ -50,3 +50,4 @@ ldmeenknekncnnnnnnnnnnnnnnnnnnnnnnnnnnnnnndndakkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk
     | pagesNumber     | number      | Número de páginas del libro    |
     | editorial       | string      | Nombre de la editorial         |
     | publicationDate | Date        | Fecha de publicación del libro |
+    | imagen          | string      | Cadena de la URL dr la imágen  |
