@@ -1,7 +1,8 @@
 # Books Api
 
 Books Api es una API REST pública que contiene información sobre libros de varios generos. Además, tambien puede registrar información de nuevos libros, actualizar y eliminar sobre los libros que usted agregue. Asimismo, también contiene sistema de autenticación de usuarios mediante JWT.
-[Swagger](https://api/v1/swagger)
+
+Leer este documento en [English](https://github.com/Juancamilo21/books-api/edit/main/README_doc.md]) | [Swagger](https://api/v1/swagger)
 
 ## Tabla de Contenido
 
