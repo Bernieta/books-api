@@ -32,6 +32,12 @@ export class GenreController {
     return httpResponse('Successfully', HttpStatus.OK, genre);
   }
 
+  @Get(':id/books')
+  public async findGenreBooks(@Param('id', ParseIntPipe) id: number) {
+    const genre = await this.genreService.findGenreBooks(id);
+    return httpResponse('Successfully', HttpStatus.OK, genre);
+  }
+
   @Post()
   @HttpCode(HttpStatus.CREATED)
   public async create(@Body() genreDto: CreateGenreDto) {
@@ -50,6 +56,6 @@ export class GenreController {
   @Delete(':id')
   @HttpCode(HttpStatus.NO_CONTENT)
   public async delete(@Param('id', ParseIntPipe) id: number) {
-    await this.genreService.delete(id);
+    return await this.genreService.delete(id);
   }
 }

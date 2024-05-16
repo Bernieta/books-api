@@ -33,7 +33,6 @@ export class UsersController {
   }
 
   @Post()
-  @HttpCode(HttpStatus.CREATED)
   public async create(@Body() userDto: CreateUserDto) {
     const user = await this.usersService.create(userDto);
     return httpResponse('Created', HttpStatus.CREATED, user);

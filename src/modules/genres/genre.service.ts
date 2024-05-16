@@ -26,7 +26,16 @@ export class GenreService {
   public async findById(id: number) {
     const genre = await this.genreRepository.findOne({ where: { id } });
     if (!genre)
-      throw new NotFoundException(`The genre with id = ${id} not exists`);
+      throw new NotFoundException(`The genre with ID ${id} not exists`);
+    return genre;
+  }
+
+  public async findGenreBooks(id: number) {
+    const genre = await this.genreRepository.findOne({
+      relations: ['books'],
+      where: { id },
+    });
+    if (!genre) throw new NotFoundException(`The genre with ID ${id} not exists`);
     return genre;
   }
 
@@ -48,7 +57,11 @@ export class GenreService {
   }
 
   public async delete(id: number) {
-    const { affected } = await this.genreRepository.delete(id);
-    if (!affected) throw new NotFoundException();
+    const genre = await this.findGenreBooks(id);
+    const { books } = genre;
+    if (books.length)
+      throw new ConflictException('Cannot delete genre with associated books');
+    const { affected } = await this.genreRepository.delete(genre.id);
+    return affected > 0;
   }
 }

@@ -25,6 +25,9 @@ export class Book extends CustomEntity {
   @Column()
   publicationDate: Date;
 
+  @Column({ type: 'text' })
+  image: string;
+
   @ManyToOne(() => Genre, (genre) => genre.books)
   @JoinColumn({ name: 'genre_id' })
   genre: Genre;

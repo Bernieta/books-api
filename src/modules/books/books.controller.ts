@@ -10,19 +10,21 @@ import {
   ParseIntPipe,
   HttpCode,
   Put,
+  Query,
 } from '@nestjs/common';
 import { BooksService } from './books.service';
 import { CreateBookDto } from './dto/create-book.dto';
 import { UpdateBookDto } from './dto/update-book.dto';
 import { httpResponse } from '../../config/response';
+import { FilterBookDto } from './dto/filter-book.dto';
 
 @Controller('books')
 export class BooksController {
   constructor(private readonly booksService: BooksService) {}
 
   @Get()
-  public async findAll() {
-    const books = await this.booksService.findAll();
+  public async findAll(@Query() params: FilterBookDto) {
+    const books = await this.booksService.findAll(params);
     return httpResponse('Successfully', HttpStatus.OK, books);
   }
 
@@ -33,7 +35,6 @@ export class BooksController {
   }
 
   @Post()
-  @HttpCode(HttpStatus.CREATED)
   public async create(@Body() bookDto: CreateBookDto) {
     const book = await this.booksService.create(bookDto);
     return httpResponse('Created', HttpStatus.CREATED, book);

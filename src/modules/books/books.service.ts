@@ -7,8 +7,9 @@ import { CreateBookDto } from './dto/create-book.dto';
 import { UpdateBookDto } from './dto/update-book.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Book } from './entities/book.entity';
-import { Repository } from 'typeorm';
+import { FindManyOptions, Like, Repository } from 'typeorm';
 import { GenreService } from '../genres/genre.service';
+import { FilterBookDto } from './dto/filter-book.dto';
 
 @Injectable()
 export class BooksService {
@@ -17,18 +18,46 @@ export class BooksService {
     private readonly genreService: GenreService,
   ) {}
 
-  public async findAll() {
-    const books = await this.bookRepository.find();
-    if (!books.length)
-      throw new NotFoundException('There are no registered books');
-    return books;
+  public async findAll(params: FilterBookDto) {
+    const options: FindManyOptions<Book> = {
+      relations: ['genre'],
+    };
+
+    const { genreId, isbn, title, limit, offset } = params;
+
+    if (genreId) options.where = { ...options.where, genre: { id: genreId } };
+
+    if (isbn) options.where = { ...options.where, isbn };
+
+    if (title) options.where = { ...options.where, title: Like(`%${title}%`) };
+
+    if (limit > 0 && offset >= 0) {
+      options.take = limit;
+      options.skip = offset;
+    }
+
+    return await this.bookRepository.find(options);
   }
 
   public async findById(id: number) {
-    const book = await this.bookRepository.findOne({ where: { id } });
-    if (!book)
-      throw new NotFoundException(`The book with id = ${id} not exists`);
+    const book = await this.bookRepository.findOne({
+      relations: ['genre'],
+      where: { id },
+    });
+    if (!book) throw new NotFoundException(`The book with ID ${id} not exists`);
     return book;
+  }
+
+  public async findBooksByGenre(genreId: number) {
+    const books = await this.bookRepository.find({
+      relations: ['genre'],
+      where: {
+        genre: { id: genreId },
+      },
+    });
+    if (!books.length)
+      throw new NotFoundException('There are no books related to this genre');
+    return books;
   }
 
   public async create(bookDto: CreateBookDto) {
@@ -37,7 +66,7 @@ export class BooksService {
     });
     if (book)
       throw new BadRequestException(
-        `The books with isbn = ${bookDto.isbn} already exists`,
+        `The books with ISBN ${bookDto.isbn} already exists`,
       );
     const { genreId, ...data } = bookDto;
     const genre = await this.genreService.findById(genreId);

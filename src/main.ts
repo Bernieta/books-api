@@ -8,8 +8,14 @@ async function bootstrap() {
   app.enableCors({
     origin: '*',
   });
-  app.useGlobalPipes(new ValidationPipe({ whitelist: true }));
-  let port = parseInt(process.env.PORT, 10) || 3001;
+  app.useGlobalPipes(
+    new ValidationPipe({
+      whitelist: true,
+      forbidNonWhitelisted: true,
+      transformOptions: { enableImplicitConversion: true },
+    }),
+  );
+  const port = parseInt(process.env.PORT, 10) || 3001;
   await app.listen(port);
 }
 
