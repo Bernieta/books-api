@@ -12,10 +12,10 @@ import { Repository } from 'typeorm';
 import { Roles } from './types/roles';
 import * as bcrypt from 'bcrypt';
 
-const saltOrRounds = 10;
-
 @Injectable()
 export class UsersService {
+  private readonly saltOrRounds: number = 10;
+
   constructor(
     @InjectRepository(User) private readonly userRepository: Repository<User>,
   ) {}
@@ -46,7 +46,7 @@ export class UsersService {
       );
     const newUser = this.userRepository.create(userDto);
     newUser.role = userDto.role ?? Roles.CUSTOMER;
-    newUser.password = await bcrypt.hash(userDto.password, saltOrRounds);
+    newUser.password = await bcrypt.hash(userDto.password, this.saltOrRounds);
     return await this.userRepository.save(newUser);
   }
 
