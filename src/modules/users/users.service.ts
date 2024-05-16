@@ -10,6 +10,9 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { User } from './entities/user.entity';
 import { Repository } from 'typeorm';
 import { Roles } from './types/roles';
+import * as bcrypt from 'bcrypt';
+
+const saltOrRounds = 10;
 
 @Injectable()
 export class UsersService {
@@ -32,10 +35,7 @@ export class UsersService {
   }
 
   public async findByEmail(email: string) {
-    const user = await this.userRepository.findOne({ where: { email } });
-    if (!user)
-      throw new NotFoundException(`The user with email = ${email} not exist`);
-    return user;
+    return await this.userRepository.findOne({ where: { email } });
   }
 
   public async create(userDto: CreateUserDto) {
@@ -46,6 +46,7 @@ export class UsersService {
       );
     const newUser = this.userRepository.create(userDto);
     newUser.role = userDto.role ?? Roles.CUSTOMER;
+    newUser.password = await bcrypt.hash(userDto.password, saltOrRounds);
     return await this.userRepository.save(newUser);
   }
 
