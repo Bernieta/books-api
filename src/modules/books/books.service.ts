@@ -36,7 +36,9 @@ export class BooksService {
       options.skip = offset;
     }
 
-    return await this.bookRepository.find(options);
+    const books = await this.bookRepository.find(options);
+    if (!books.length) throw new NotFoundException('No results found');
+    return books;
   }
 
   public async findById(id: number) {

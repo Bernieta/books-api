@@ -39,7 +39,6 @@ export class GenreController {
   }
 
   @Post()
-  @HttpCode(HttpStatus.CREATED)
   public async create(@Body() genreDto: CreateGenreDto) {
     const genre = await this.genreService.create(genreDto);
     return httpResponse('Created', HttpStatus.CREATED, genre);

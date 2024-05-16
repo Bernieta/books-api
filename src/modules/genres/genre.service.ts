@@ -1,5 +1,5 @@
 import {
-  ConflictException,
+  BadRequestException,
   Injectable,
   NotFoundException,
 } from '@nestjs/common';
@@ -35,7 +35,7 @@ export class GenreService {
       relations: ['books'],
       where: { id },
     });
-    if (!genre) throw new NotFoundException(`The genre with ID ${id} not exists`);
+    if (!genre) throw new NotFoundException('No results found');
     return genre;
   }
 
@@ -44,7 +44,7 @@ export class GenreService {
       where: { genreName: genreDto.genreName },
     });
     if (genre)
-      throw new ConflictException(
+      throw new BadRequestException(
         `The genre ${genreDto.genreName} already exist`,
       );
     return await this.genreRepository.save(genreDto);
@@ -60,7 +60,9 @@ export class GenreService {
     const genre = await this.findGenreBooks(id);
     const { books } = genre;
     if (books.length)
-      throw new ConflictException('Cannot delete genre with associated books');
+      throw new BadRequestException(
+        'Cannot delete genre with associated books',
+      );
     const { affected } = await this.genreRepository.delete(genre.id);
     return affected > 0;
   }

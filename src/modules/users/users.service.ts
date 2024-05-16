@@ -1,4 +1,5 @@
 import {
+  BadRequestException,
   ConflictException,
   Injectable,
   NotFoundException,
@@ -26,18 +27,21 @@ export class UsersService {
   public async findById(id: number) {
     const user = await this.userRepository.findOne({ where: { id } });
     if (!user)
-      throw new NotFoundException(`The user with id = ${id} not exist`);
+      throw new NotFoundException(`The user with ID = ${id} not exist`);
     return user;
   }
 
   public async findByEmail(email: string) {
-    return await this.userRepository.findOne({ where: { email } });
+    const user = await this.userRepository.findOne({ where: { email } });
+    if (!user)
+      throw new NotFoundException(`The user with email = ${email} not exist`);
+    return user;
   }
 
   public async create(userDto: CreateUserDto) {
     const user = await this.findByEmail(userDto.email);
     if (user)
-      throw new ConflictException(
+      throw new BadRequestException(
         `The user with email ${userDto.email} already exist`,
       );
     const newUser = this.userRepository.create(userDto);
@@ -54,6 +58,6 @@ export class UsersService {
   public async delete(id: number) {
     const { affected } = await this.userRepository.delete(id);
     if (!affected)
-      throw new NotFoundException(`The user with id = ${id} not exist`);
+      throw new NotFoundException(`The user with ID = ${id} not exist`);
   }
 }
