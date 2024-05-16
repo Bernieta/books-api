@@ -1,9 +1,9 @@
-import { CustomEntity } from '../../../database/entities/custom.entity';
+import { BaseEntity } from '../../../database/entities/base.entity';
 import { Column, Entity } from 'typeorm';
 import { Roles } from '../types/roles';
 
 @Entity('users')
-export class User extends CustomEntity {
+export class User extends BaseEntity {
   @Column()
   fullName: string;
 

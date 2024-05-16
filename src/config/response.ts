@@ -1,6 +1,6 @@
-import { CustomEntity } from '../database/entities/custom.entity';
+import { BaseEntity } from '../database/entities/base.entity';
 
-export function httpResponse<T extends CustomEntity>(
+export function httpResponse<T extends BaseEntity>(
   message: string,
   statusCode: number,
   data: T | T[],
