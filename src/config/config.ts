@@ -1,4 +1,5 @@
 import { registerAs } from '@nestjs/config';
+import * as process from 'node:process';
 
 export default registerAs('config', () => ({
   port: parseInt(process.env.PORT, 10) || 3001,
@@ -9,5 +10,6 @@ export default registerAs('config', () => ({
     password: process.env.DATABASE_PASSWORD,
     name: process.env.DATABASE_NAME,
   },
+  secretKey: process.env.SECRET_KEY,
   env: process.env.NODE_ENV || 'development',
 }));
