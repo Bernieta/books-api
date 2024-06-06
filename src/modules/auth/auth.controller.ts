@@ -1,4 +1,12 @@
-import { Body, Controller, Get, Post, Req, UseGuards } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  HttpCode,
+  HttpStatus,
+  Post,
+  Req,
+  UseGuards,
+} from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { LocalAuthGuard } from './guards/local-auth.guard';
 import { Request } from 'express';
@@ -6,6 +14,7 @@ import { User } from '../users/entities/user.entity';
 import { JwtAuthGuard } from './guards/jwt-auth.guard';
 import { UsersService } from '../users/users.service';
 import { Payload } from './interfaces/payload';
+import { httpResponse } from 'src/config/response';
 
 @Controller('auth')
 export class AuthController {
@@ -15,6 +24,7 @@ export class AuthController {
   ) {}
 
   @UseGuards(LocalAuthGuard)
+  @HttpCode(HttpStatus.OK)
   @Post('login')
   public async login(@Req() req: Request) {
     const user = req.user as User;
@@ -25,6 +35,7 @@ export class AuthController {
   @Get('profile')
   public async profile(@Req() req: Request) {
     const user = req.user as Payload;
-    return this.userService.findById(user?.id);
+    const userProfile = await this.userService.findById(user?.id);
+    return httpResponse('Successfully', HttpStatus.OK, userProfile);
   }
 }
