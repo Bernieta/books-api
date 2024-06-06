@@ -6,10 +6,10 @@ export default registerAs('config', () => ({
   database: {
     port: parseInt(process.env.DATABASE_PORT, 10) || 5432,
     host: process.env.DATABASE_HOST,
-    username: process.env.DATABASE_USERNAME,
+    user: process.env.DATABASE_USER,
     password: process.env.DATABASE_PASSWORD,
     name: process.env.DATABASE_NAME,
   },
-  secretKey: process.env.SECRET_KEY,
+  jwtSecret: process.env.JWT_SECRET,
   env: process.env.NODE_ENV || 'development',
 }));
