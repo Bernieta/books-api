@@ -1,4 +1,4 @@
-import { IsNotEmpty, IsString } from 'class-validator';
+import { IsNotEmpty, IsString, IsUrl } from 'class-validator';
 
 export class CreateGenreDto {
   @IsNotEmpty()
@@ -7,5 +7,6 @@ export class CreateGenreDto {
 
   @IsNotEmpty()
   @IsString()
+  @IsUrl()
   image: string;
 }

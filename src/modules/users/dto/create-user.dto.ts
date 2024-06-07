@@ -4,7 +4,7 @@ import {
   IsEnum,
   IsNotEmpty,
   IsOptional,
-  IsString,
+  IsString, IsUrl,
   MinLength,
 } from 'class-validator';
 
@@ -22,9 +22,12 @@ export class CreateUserDto {
   email: string;
 
   @IsNotEmpty()
+  @IsString()
   @MinLength(4)
   password: string;
 
   @IsNotEmpty()
+  @IsString()
+  @IsUrl()
   avatar: string;
 }

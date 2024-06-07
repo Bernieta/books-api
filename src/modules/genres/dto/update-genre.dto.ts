@@ -1,4 +1,4 @@
-import { IsNotEmpty, IsOptional, IsString } from 'class-validator';
+import { IsNotEmpty, IsOptional, IsString, IsUrl } from 'class-validator';
 
 export class UpdateGenreDto {
   @IsOptional()
@@ -9,5 +9,6 @@ export class UpdateGenreDto {
   @IsOptional()
   @IsNotEmpty()
   @IsString()
+  @IsUrl()
   image: string;
 }

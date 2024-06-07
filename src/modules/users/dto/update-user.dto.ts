@@ -3,7 +3,7 @@ import {
   IsEnum,
   IsNotEmpty,
   IsOptional,
-  IsString,
+  IsString, IsUrl,
   MinLength,
 } from 'class-validator';
 import { Roles } from '../enum/roles';
@@ -25,10 +25,13 @@ export class UpdateUserDto {
 
   @IsOptional()
   @IsNotEmpty()
+  @IsString()
   @MinLength(4)
   password: string;
 
   @IsOptional()
   @IsNotEmpty()
+  @IsString()
+  @IsUrl()
   avatar: string;
 }

@@ -3,11 +3,11 @@ import { IsISBN, IsNumber, IsOptional, IsString } from 'class-validator';
 export class FilterBookDto {
   @IsOptional()
   @IsISBN()
-  isbn: string
+  isbn: string;
 
   @IsOptional()
   @IsString()
-  title: string
+  title: string;
 
   @IsOptional()
   @IsNumber()
@@ -15,7 +15,7 @@ export class FilterBookDto {
 
   @IsOptional()
   @IsNumber()
-  offset: number
+  offset: number;
 
   @IsOptional()
   @IsNumber()

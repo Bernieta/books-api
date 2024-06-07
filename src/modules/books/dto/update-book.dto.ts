@@ -1,4 +1,12 @@
-import { IsDate, IsISBN, IsNotEmpty, IsNumber, IsOptional, IsString } from 'class-validator';
+import {
+  IsDate,
+  IsISBN,
+  IsNotEmpty,
+  IsNumber,
+  IsOptional,
+  IsString,
+  IsUrl,
+} from 'class-validator';
 
 export class UpdateBookDto {
   @IsOptional()
@@ -39,5 +47,6 @@ export class UpdateBookDto {
   @IsOptional()
   @IsNotEmpty()
   @IsString()
+  @IsUrl()
   image: string;
 }
