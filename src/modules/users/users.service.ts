@@ -1,6 +1,5 @@
 import {
   BadRequestException,
-  ConflictException,
   Injectable,
   NotFoundException,
 } from '@nestjs/common';
@@ -9,7 +8,7 @@ import { UpdateUserDto } from './dto/update-user.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { User } from './entities/user.entity';
 import { Repository } from 'typeorm';
-import { Roles } from './types/roles';
+import { Roles } from './enum/roles';
 import * as bcrypt from 'bcrypt';
 
 @Injectable()
@@ -30,7 +29,7 @@ export class UsersService {
   public async findById(id: number) {
     const user = await this.userRepository.findOne({ where: { id } });
     if (!user)
-      throw new NotFoundException(`The user with ID = ${id} not exist`);
+      throw new NotFoundException(`The user with ID = ${id} not exists`);
     return user;
   }
 
@@ -42,7 +41,7 @@ export class UsersService {
     const user = await this.findByEmail(userDto.email);
     if (user)
       throw new BadRequestException(
-        `The user with email ${userDto.email} already exist`,
+        `The user with email ${userDto.email} already exists`,
       );
     const newUser = this.userRepository.create(userDto);
     newUser.role = userDto.role ?? Roles.CUSTOMER;
@@ -59,6 +58,6 @@ export class UsersService {
   public async delete(id: number) {
     const { affected } = await this.userRepository.delete(id);
     if (!affected)
-      throw new NotFoundException(`The user with ID = ${id} not exist`);
+      throw new NotFoundException(`The user with ID = ${id} not exists`);
   }
 }

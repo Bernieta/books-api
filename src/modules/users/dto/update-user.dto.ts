@@ -6,7 +6,7 @@ import {
   IsString,
   MinLength,
 } from 'class-validator';
-import { Roles } from '../types/roles';
+import { Roles } from '../enum/roles';
 
 export class UpdateUserDto {
   @IsOptional()
