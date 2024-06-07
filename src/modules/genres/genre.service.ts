@@ -63,7 +63,6 @@ export class GenreService {
       throw new BadRequestException(
         'Cannot delete genre with associated books',
       );
-    const { affected } = await this.genreRepository.delete(genre.id);
-    return affected > 0;
+    await this.genreRepository.delete(genre.id);
   }
 }
