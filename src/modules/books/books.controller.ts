@@ -23,8 +23,8 @@ export class BooksController {
   constructor(private readonly booksService: BooksService) {}
 
   @Get()
-  public async findAll(@Query() params: FilterBookDto) {
-    const books = await this.booksService.findAll(params);
+  public async findAll(@Query() queryParams: FilterBookDto) {
+    const books = await this.booksService.findAll(queryParams);
     return httpResponse('Successfully', HttpStatus.OK, books);
   }
 

@@ -18,12 +18,12 @@ export class BooksService {
     private readonly genreService: GenreService,
   ) {}
 
-  public async findAll(params: FilterBookDto) {
+  public async findAll(queryParams: FilterBookDto) {
     const options: FindManyOptions<Book> = {
       relations: ['genre'],
     };
 
-    const { genreId, isbn, title, limit, offset } = params;
+    const { genreId, isbn, title, limit, offset } = queryParams;
 
     if (genreId) options.where = { ...options.where, genre: { id: genreId } };
 
@@ -48,18 +48,6 @@ export class BooksService {
     });
     if (!book) throw new NotFoundException(`The book with ID ${id} not exists`);
     return book;
-  }
-
-  public async findBooksByGenre(genreId: number) {
-    const books = await this.bookRepository.find({
-      relations: ['genre'],
-      where: {
-        genre: { id: genreId },
-      },
-    });
-    if (!books.length)
-      throw new NotFoundException('There are no books related to this genre');
-    return books;
   }
 
   public async create(bookDto: CreateBookDto) {
