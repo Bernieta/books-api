@@ -1,4 +1,5 @@
 import { IsISBN, IsNumber, IsOptional, IsString } from 'class-validator';
+import { ApiProperty } from '@nestjs/swagger';
 
 export class FilterBookDto {
   @IsOptional()
@@ -9,10 +10,12 @@ export class FilterBookDto {
   @IsString()
   title: string;
 
+  @ApiProperty()
   @IsOptional()
   @IsNumber()
   limit: number;
 
+  @ApiProperty()
   @IsOptional()
   @IsNumber()
   offset: number;

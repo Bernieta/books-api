@@ -15,7 +15,9 @@ import { JwtAuthGuard } from './guards/jwt-auth.guard';
 import { UsersService } from '../users/users.service';
 import { Payload } from './interfaces/payload';
 import { httpResponse } from 'src/config/response';
+import { ApiTags } from '@nestjs/swagger';
 
+@ApiTags('auth')
 @Controller('auth')
 export class AuthController {
   constructor(
