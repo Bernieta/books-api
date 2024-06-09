@@ -1,75 +1,364 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
+# Books Api
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+Books Api es una API REST pública que contiene información sobre libros de varios generos. Además, tambien puede registrar información de nuevos libros, actualizar y eliminar sobre los libros que usted agregue. Asimismo, también contiene sistema de autenticación de usuarios mediante JWT.
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+Leer este documento en [English](https://github.com/Juancamilo21/books-api/edit/main/README_doc.md]) | [Swagger](https://api/v1/swagger)
 
-[Read docs](https://github.com/Juancamilo21/books-api/blob/main/README_doc.md)
+## Tabla de Contenido
 
-## Description
+- [Books Api](#books-api)
+  - [Tabla de Contenido](#tabla-de-contenido)
+  - [Libros](#libros)
+    - [Obtener todos los libros](#obtener-todos-los-libros)
+    - [Obtener un solo libro](#obtener-un-solo-libro)
+    - [Filtros](#filtros)
+      - [Filtrar por isbn](#filtrar-por-isbn)
+      - [Filtrar por titulo](#filtrar-por-titulo)
+      - [Filtrar por genero](#filtrar-por-genero)
+      - [Paginación](#paginación)
+    - [Crear un libro](#crear-un-libro)
+    - [Actualiar un libro](#actualiar-un-libro)
+    - [Eliminar un libro](#eliminar-un-libro)
+  - [Generos](#generos)
+    - [Obtener todos los generos](#)
+    - [Obtener un solo genero](#)
+    - [Crear un genero](#)
+    - [Actualizar un genero](#)
+    - [Eliminar genero](#)
+  - [Usuarios](#usuarios)
+    - [Obtener todos los usuarios](#)
+    - [Obtener un solo usuario](#)
+    - [Crear un usuario](#)
+    - [Actualizar un usuario](#)
+    - [Eliminar usuario](#)
+  - [Autenticación](#autenticación)
+    - [Login](#login)
+    - [Perfil](#perfil)
+  - [Entidades](#entidades)
+    - [Entidad Base](#entidad-base)
+    - [Entidad de Libros](#entidad-de-libros)
+    - [Entidad de Generos](#entidad-de-generos)
+    - [Entidad de Usuarios](#entidad-de-usuarios)
+  - [Instalación y ejecución](#instalación-y-ejecución)
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+## Libros
 
-## Installation
+- ### Obtener todos los libros
+  ```bash
+  [GET] https://api/v1/books
+  ```
+  ```json
+  {
+    "message": "Successfully",
+    "statusCode": 200,
+    "data": [
+      {
+        "id": 1,
+        "createdAt": "2024-05-01T14:36:21.305Z",
+        "updatedAt": "2024-05-01T14:36:21.305Z",
+        "title": "El principito",
+        "isbn": "978-84-204-5391-4",
+        "author": "Antoine de Saint-Exupéry",
+        "description": "El principito es una novela corta y la obra más famosa del escritor y aviador francés Antoine de Saint-Exupéry.",
+        "pagesNumber": 96,
+        "editorial": "Salamandra",
+        "publicationDate": "1943-04-06T05:00:00.000Z"
+      }
+      // otros...
+    ]
+  }
+  ```
+- ### Obtener un solo libro
+  ```bash
+  [GET] https://api/v1/books/2
+  ```
+  ```json
+  {
+    "message": "Successfully",
+    "statusCode": 200,
+    "data": {
+      "id": 2,
+      "createdAt": "2024-05-01T14:41:59.496Z",
+      "updatedAt": "2024-05-01T14:41:59.496Z",
+      "title": "Cien años de soledad",
+      "isbn": "978-84-376-2312-1",
+      "author": "Gabriel García Márquez",
+      "description": "Cien años de soledad es una novela del escritor colombiano Gabriel García Márquez, ganador del Premio Nobel de Literatura en 1982.",
+      "pagesNumber": 432,
+      "editorial": "Editorial Sudamericana",
+      "publicationDate": "1967-05-30T00:00:00.000Z"
+    }
+  }
+  ```
 
-```bash
-$ npm install
-```
+## Filtros
 
-## Running the app
+- ### Filtrar por isbn
 
-```bash
-# development
-$ npm run start
+  ```bash
+  [GET] https://api/v1/books/?isbn=9788498380584
+  ```
 
-# watch mode
-$ npm run start:dev
+  ```json
+  {
+    "message": "Successfully",
+    "statusCode": 200,
+    "data": {
+      "id": 3,
+      "createdAt": "2024-05-01T14:42:29.056Z",
+      "updatedAt": "2024-05-01T14:47:44.337Z",
+      "title": "Harry Potter y la piedra filosofal",
+      "isbn": "978-84-9838-058-4",
+      "author": "J.K. Rowling",
+      "description": "Harry Potter y la piedra filosofal es el primer libro de la serie Harry Potter escrita por la autora británica J.K. Rowling.",
+      "pagesNumber": 256,
+      "editorial": "Salani Editore",
+      "publicationDate": "1997-06-26T00:00:00.000Z"
+    }
+  }
+  ```
 
-# production mode
-$ npm run start:prod
-```
+- ### Filtrar por titulo
 
-## Test
+  ```bash
+  [GET] https://api/v1/books/?title=Harry Potter y la piedra filosofal
+  ```
 
-```bash
-# unit tests
-$ npm run test
+  ```json
+  {
+    "message": "Successfully",
+    "statusCode": 200,
+    "data": {
+      "id": 3,
+      "createdAt": "2024-05-01T14:42:29.056Z",
+      "updatedAt": "2024-05-01T14:47:44.337Z",
+      "title": "Harry Potter y la piedra filosofal",
+      "isbn": "978-84-9838-058-4",
+      "author": "J.K. Rowling",
+      "description": "Harry Potter y la piedra filosofal es el primer libro de la serie Harry Potter escrita por la autora británica J.K. Rowling.",
+      "pagesNumber": 256,
+      "editorial": "Salani Editore",
+      "publicationDate": "1997-06-26T00:00:00.000Z"
+    }
+  }
+  ```
 
-# e2e tests
-$ npm run test:e2e
+- ### Filtrar por genero
 
-# test coverage
-$ npm run test:cov
-```
+  ```bash
+  [GET] https://api/v1/books/?genreId=2
+  ```
 
-## Support
+  ```json
+  {
+    "message": "Successfully",
+    "statusCode": 200,
+    "data": {
+      "id": 3,
+      "createdAt": "2024-05-01T14:42:29.056Z",
+      "updatedAt": "2024-05-01T14:47:44.337Z",
+      "title": "Harry Potter y la piedra filosofal",
+      "isbn": "978-84-9838-058-4",
+      "author": "J.K. Rowling",
+      "description": "Harry Potter y la piedra filosofal es el primer libro de la serie Harry Potter escrita por la autora británica J.K. Rowling.",
+      "pagesNumber": 256,
+      "editorial": "Salani Editore",
+      "publicationDate": "1997-06-26T00:00:00.000Z"
+    }
+  }
+  ```
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+- ### Paginación
 
-## Stay in touch
+  ```bash
+  [GET] https://api/v1/books/?limit=5&offset=0
+  ```
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+  ```json
+  {
+    "message": "Successfully",
+    "statusCode": 200,
+    "data": {
+      "id": 3,
+      "createdAt": "2024-05-01T14:42:29.056Z",
+      "updatedAt": "2024-05-01T14:47:44.337Z",
+      "title": "Harry Potter y la piedra filosofal",
+      "isbn": "978-84-9838-058-4",
+      "author": "J.K. Rowling",
+      "description": "Harry Potter y la piedra filosofal es el primer libro de la serie Harry Potter escrita por la autora británica J.K. Rowling.",
+      "pagesNumber": 256,
+      "editorial": "Salani Editore",
+      "publicationDate": "1997-06-26T00:00:00.000Z"
+    }
+  }
+  ```
 
-## License
+- ### Crear un libro
 
-Nest is [MIT licensed](LICENSE).
+  ```bash
+  [POST] https://api/v1/books
+  ```
+
+  ```json
+  {
+    "title": "Harry Potter y la piedra filosofal",
+    "isbn": "978-84-9838-058-4",
+    "author": "J.K. Rowling",
+    "description": "Harry Potter y la piedra filosofal es el primer libro de la serie Harry Potter escrita por la autora británica J.K. Rowling.",
+    "pagesNumber": 256,
+    "editorial": "Salani Editore",
+    "publicationDate": "1997-06-26T00:00:00.000Z",
+    "genreId": 2
+  }
+  ```
+
+  #### Respuesta:
+
+  ```json
+  {
+    "title": "Harry Potter y la piedra filosofal",
+    "isbn": "978-84-9838-058-4",
+    "author": "J.K. Rowling",
+    "description": "Harry Potter y la piedra filosofal es el primer libro de la serie Harry Potter escrita por la autora británica J.K. Rowling.",
+    "pagesNumber": 256,
+    "editorial": "Salani Editore",
+    "publicationDate": "1997-06-26T00:00:00.000Z",
+    "genreId": 2
+  }
+  ```
+
+- ### Actualizar un libro
+
+- ### Eliminar un libro
+  ```bash
+  [DELETE] https://api/v1/books/2
+  ```
+  #### Respuesta:
+  ```bash
+  204 # No Content
+  ```
+
+## Generos
+
+## Usuarios
+
+## Autenticación
+
+- ### Login
+
+  ```bash
+  [POST] https://api/v1/auth/login
+  ```
+
+  ```json
+  // Body
+  {
+    "email": "juan@mail.com",
+    "password": "juan123"
+  }
+  ```
+
+  #### Respuesta
+
+  ```json
+  {
+    "message": "Successfully",
+    "statusCode": 200,
+    "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjMsImlhdCI6MTcxNzg5Njk2MSwiZXhwIjoxNzE3ODk3MDgxfQ.GIaIRlAVS0FM6eaO0Kyxfc1VtTBWwNx7wRxA6BndAzY"
+  }
+  ```
+
+- ### Perfil
+
+  ```bash
+  [GET] https://api/v1/auth/profile
+  ```
+
+  ```json
+  // Headers
+  {
+    "Authorization": "Bearer { your access token }"
+  }
+  ```
+
+  #### Respuesta
+
+  ```json
+  {
+    "message": "Successfully",
+    "statusCode": 200,
+    "data": {
+      "id": 3,
+      "createdAt": "2024-06-09T01:35:28.439Z",
+      "updatedAt": "2024-06-09T01:35:28.439Z",
+      "fullName": "Juan Arrieta",
+      "role": "customer",
+      "email": "juan@mail.com",
+      "password": "$2b$10$VFfbjqcD45g6OE0TWxvc3eNOgl1Cr4acXRmnfrsMgIix1FBl38Be.",
+      "avatar": "aaaaaa.png"
+    }
+  }
+  ```
+
+## Entidades
+
+- ### Entidad Base
+
+  Esta entidad es extendida por los demas entidades.
+
+  | Atributo   | Type   | Descripción            |
+  | ---------- | ------ | ---------------------- |
+  | id         | number | El id de las entidades |
+  | createdAt  | Date   | Fecha de creación      |
+  | updateedAt | Date   | Fecha de actualización |
+
+- ### Entidad de Usuarios
+
+  | Atributo | Type        | Descripción                   |
+  | -------- | ----------- | ----------------------------- |
+  | fullName | string      | Nombre completo del usuario   |
+  | role     | Roles(Enum) | Rol del usuario               |
+  | email    | string      | Email del usuario             |
+  | password | string      | Contraseña del usuario        |
+  | avatar   | string      | Cadena de la URL de la imágen |
+
+- ### Entidad de Generos
+
+  | Atributo   | Type   | Descripción                   |
+  | ---------- | ------ | ----------------------------- |
+  | genderName | string | Nombre del genero             |
+  | image      | string | Cadena de la URL de la imágen |
+
+- ### Entidad de Libros
+
+  | Atributo        | Type   | Descripción                    |
+  | --------------- | ------ | ------------------------------ |
+  | title           | string | Titulo del libro               |
+  | isbn            | string | Isbn unico del libro           |
+  | author          | string | Nombre(es) del autor(es)       |
+  | description     | string | Descripción del libro          |
+  | pagesNumber     | number | Número de páginas del libro    |
+  | editorial       | string | Nombre de la editorial         |
+  | publicationDate | Date   | Fecha de publicación del libro |
+  | image           | string | Cadena de la URL dr la imágen  |
+
+## Instalación y ejecución
+
+- ### Instalación
+
+  ```bash
+  $ npm install
+  ```
+
+- ### Ejecutar la aplicación
+
+  ```bash
+  # development
+  $ npm run start
+
+  # watch mode
+  $ npm run start:dev
+
+  # production mode
+  $ npm run start:prod
+  ```
