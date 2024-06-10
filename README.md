@@ -17,20 +17,20 @@ Leer este documento en [English](https://github.com/Juancamilo21/books-api/blob/
       - [Filtrar por genero](#filtrar-por-genero)
       - [Paginación](#paginación)
     - [Crear un libro](#crear-un-libro)
-    - [Actualiar un libro](#actualiar-un-libro)
+    - [Actualiar un libro](#actualizar-un-libro)
     - [Eliminar un libro](#eliminar-un-libro)
   - [Generos](#generos)
-    - [Obtener todos los generos](#)
-    - [Obtener un solo genero](#)
-    - [Crear un genero](#)
-    - [Actualizar un genero](#)
-    - [Eliminar genero](#)
+    - [Obtener todos los generos](#obtener-todos-los-generos)
+    - [Obtener un solo genero](#obtener-un-solo-genero)
+    - [Crear un genero](#crear-un-genero)
+    - [Actualizar un genero](#actualizar-un-genero)
+    - [Eliminar genero](#eliminar-un-genero)
   - [Usuarios](#usuarios)
-    - [Obtener todos los usuarios](#)
-    - [Obtener un solo usuario](#)
-    - [Crear un usuario](#)
-    - [Actualizar un usuario](#)
-    - [Eliminar usuario](#)
+    - [Obtener todos los usuarios](#obtener-todos-los-libros)
+    - [Obtener un solo usuario](#obtener-un-solo-usuario)
+    - [Crear un usuario](#crear-un-usuario)
+    - [Actualizar un usuario](#actualizar-un-usuario)
+    - [Eliminar usuario](#eliminar-un-usuario)
   - [Autenticación](#autenticación)
     - [Login](#login)
     - [Perfil](#perfil)
@@ -212,35 +212,290 @@ Leer este documento en [English](https://github.com/Juancamilo21/books-api/blob/
   }
   ```
 
-  #### Respuesta:
+  #### Respuesta
 
   ```json
   {
-    "title": "Harry Potter y la piedra filosofal",
-    "isbn": "978-84-9838-058-4",
-    "author": "J.K. Rowling",
-    "description": "Harry Potter y la piedra filosofal es el primer libro de la serie Harry Potter escrita por la autora británica J.K. Rowling.",
-    "pagesNumber": 256,
-    "editorial": "Salani Editore",
-    "publicationDate": "1997-06-26T00:00:00.000Z",
-    "genreId": 2
+    "message": "Created",
+    "statusCode": 201,
+    "data": {
+      "title": "Harry Potter y la piedra filosofal",
+      "isbn": "978-84-9838-058-4",
+      "author": "J.K. Rowling",
+      "description": "Harry Potter y la piedra filosofal es el primer libro de la serie Harry Potter escrita por la autora británica J.K. Rowling.",
+      "pagesNumber": 256,
+      "editorial": "Salani Editore",
+      "publicationDate": "1997-06-26T00:00:00.000Z",
+      "genreId": 2
+    }
   }
   ```
 
 - ### Actualizar un libro
 
+  ```bash
+  [PUT] https://api/v1/books/2
+  ```
+
+  ```json
+  {
+    "title": "Harry Potter y la piedra filosofal, primera pelicula"
+  }
+  ```
+
+  #### Respuesta
+
+  ```json
+  {
+    "message": "Successfully",
+    "statusCode": 200,
+    "data": {
+      "title": "Harry Potter y la piedra filosofal, primera pelicula",
+      "isbn": "978-84-9838-058-4",
+      "author": "J.K. Rowling",
+      "description": "Harry Potter y la piedra filosofal es el primer libro de la serie Harry Potter escrita por la autora británica J.K. Rowling.",
+      "pagesNumber": 256,
+      "editorial": "Salani Editore",
+      "publicationDate": "1997-06-26T00:00:00.000Z",
+      "genreId": 2
+    }
+  }
+  ```
+
 - ### Eliminar un libro
   ```bash
   [DELETE] https://api/v1/books/2
   ```
-  #### Respuesta:
+  #### Respuesta
   ```bash
   204 # No Content
   ```
 
 ## Generos
 
+- ### Obtener todos los generos
+
+  ```bash
+  [GET] https://api/v1/genres
+  ```
+
+  ```json
+  {
+    "message": "Successfully",
+    "statusCode": 200,
+    "data": [
+      {
+        "id": 2,
+        "createdAt": "2024-06-10T00:49:30.389Z",
+        "updatedAt": "2024-06-10T00:49:30.389Z",
+        "genreName": "Ciencia y tecnología",
+        "image": "ggg.png"
+      }
+      // otros
+    ]
+  }
+  ```
+
+- ### Obtener un solo genero
+
+  ```bash
+  [GET] https://api/v1/genres/2
+  ```
+
+  ```json
+  {
+    "message": "Successfully",
+    "statusCode": 200,
+    "data": {
+      "id": 2,
+      "createdAt": "2024-06-10T00:49:30.389Z",
+      "updatedAt": "2024-06-10T00:49:30.389Z",
+      "genreName": "Ciencia y tecnología",
+      "image": "ggg.png"
+    }
+  }
+  ```
+
+- ### Crear un genero
+
+  ```bash
+  [POST] https://api/v1/genres
+  ```
+
+  ```json
+  {
+    "genreName": "Ciencia y tecnología",
+    "image": "ggg.png"
+  }
+  ```
+
+  #### Respuesta
+
+  ```json
+  {
+    "message": "Created",
+    "statusCode": 201,
+    "data": {
+      "genreName": "Ciencia y tecnología",
+      "image": "ggg.png",
+      "id": 2,
+      "createdAt": "2024-06-10T00:49:30.389Z",
+      "updatedAt": "2024-06-10T00:49:30.389Z"
+    }
+  }
+  ```
+
+- ### Actualizar un genero
+
+  ```bash
+  [PUT] https://api/v1/genres/2
+  ```
+
+  ```json
+  {
+    "genreName": "Ciencias tecnológicas"
+  }
+  ```
+
+  #### Respuesta
+
+  ```json
+  {
+    "message": "Successfully",
+    "statusCode": 200,
+    "data": {
+      "id": 2,
+      "createdAt": "2024-06-10T00:49:30.389Z",
+      "updatedAt": "2024-06-10T01:04:34.269Z",
+      "genreName": "Ciencias tecnológicas",
+      "image": "ggg.png"
+    }
+  }
+  ```
+
+- ### Eliminar un genero
+
+  ```bash
+  [DELETE] https://api/v1/genres/2
+  ```
+
+  ```bash
+  204 # No Content
+  ```
+
 ## Usuarios
+
+- ### Obtener todos los usuarios
+  ```bash
+  [GET] https://api/v1/users
+  ```
+  ```json
+  {
+    "message": "Successfully",
+    "statusCode": 200,
+    "data": [
+      {
+        "id": 3,
+        "createdAt": "2024-06-09T01:35:28.439Z",
+        "updatedAt": "2024-06-09T01:35:28.439Z",
+        "fullName": "Juan Arrieta",
+        "role": "customer",
+        "email": "juan@mail.com",
+        "password": "$2b$10$VFfbjqcD45g6OE0TWxvc3eNOgl1Cr4acXRmnfrsMgIix1FBl38Be.",
+        "avatar": "aaaaaa.png"
+      }
+      // otros
+    ]
+  }
+  ```
+- ### Obtener un solo usuario
+  ```bash
+  [GET] https://api/v1/users/3
+  ```
+  ```json
+  {
+    "message": "Successfully",
+    "statusCode": 200,
+    "data": {
+      "id": 3,
+      "createdAt": "2024-06-09T01:35:28.439Z",
+      "updatedAt": "2024-06-09T01:35:28.439Z",
+      "fullName": "Juan Arrieta",
+      "role": "customer",
+      "email": "juan@mail.com",
+      "password": "$2b$10$VFfbjqcD45g6OE0TWxvc3eNOgl1Cr4acXRmnfrsMgIix1FBl38Be.",
+      "avatar": "aaaaaa.png"
+    }
+  }
+  ```
+- ### Crear un usuario
+
+  ```bash
+  [POST] https://api/v1/users
+  ```
+
+  ```json
+  {
+    "fullName": "Juan Arrieta",
+    "email": "juan@mail.com",
+    "password": "juan123",
+    "avatar": "aaaaaa.png"
+  }
+  ```
+
+  #### Respuesta
+
+  ```json
+  {
+    "message": "Created",
+    "statusCode": 201,
+    "data": {
+      "fullName": "Juan Arrieta",
+      "email": "juan@mail.com",
+      "password": "$2b$10$VFfbjqcD45g6OE0TWxvc3eNOgl1Cr4acXRmnfrsMgIix1FBl38Be.",
+      "avatar": "aaaaaa.png",
+      "role": "customer",
+      "id": 3,
+      "createdAt": "2024-06-09T01:35:28.439Z",
+      "updatedAt": "2024-06-09T01:35:28.439Z"
+    }
+  }
+  ```
+
+- ### Actualizar un usuario
+  ```bash
+  [PUT] https://api/v1/users/3
+  ```
+  ```json
+  {
+    "fullName": "Juan Arrieta Bernal"
+  }
+  ```
+  #### Respuesta
+  ```json
+  {
+    "message": "Successfully",
+    "statusCode": 200,
+    "data": {
+      "fullName": "Juan Arrieta Bernal",
+      "email": "juan@mail.com",
+      "password": "$2b$10$VFfbjqcD45g6OE0TWxvc3eNOgl1Cr4acXRmnfrsMgIix1FBl38Be.",
+      "avatar": "aaaaaa.png",
+      "role": "customer",
+      "id": 3,
+      "createdAt": "2024-06-09T01:35:28.439Z",
+      "updatedAt": "2024-06-09T01:35:28.439Z"
+    }
+  }
+  ```
+- ### Eliminar un usuario
+  ```bash
+  [DELETE] https://api/v1/users/3
+  ```
+  #### Respuesta:
+  ```bash
+  204 # No Content
+  ```
 
 ## Autenticación
 
