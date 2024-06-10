@@ -45,7 +45,8 @@ export class UsersController {
     @Param('id', ParseIntPipe) id: number,
     @Body() userDto: UpdateUserDto,
   ) {
-    return this.usersService.update(id, userDto);
+    const user = await this.usersService.update(id, userDto);
+    return httpResponse('Successfully', HttpStatus.OK, user);
   }
 
   @Delete(':id')

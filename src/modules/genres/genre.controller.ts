@@ -51,7 +51,8 @@ export class GenreController {
     @Param('id', ParseIntPipe) id: number,
     @Body() genreDto: UpdateGenreDto,
   ) {
-    return this.genreService.update(id, genreDto);
+    const genre = await this.genreService.update(id, genreDto);
+    return httpResponse('Successfully', HttpStatus.OK, genre);
   }
 
   @Delete(':id')
