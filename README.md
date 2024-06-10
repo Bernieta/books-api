@@ -389,7 +389,7 @@ Leer este documento en [English](https://github.com/Juancamilo21/books-api/blob/
 
 - ### Obtener todos los usuarios
   ```bash
-  [GET] https://api/v1/users
+  [GET] https://api/users
   ```
   ```json
   {
@@ -397,14 +397,14 @@ Leer este documento en [English](https://github.com/Juancamilo21/books-api/blob/
     "statusCode": 200,
     "data": [
       {
-        "id": 3,
-        "createdAt": "2024-06-09T01:35:28.439Z",
-        "updatedAt": "2024-06-09T01:35:28.439Z",
-        "fullName": "Juan Arrieta",
+        "id": 2,
+        "createdAt": "2024-06-10T14:33:26.626Z",
+        "updatedAt": "2024-06-10T14:33:26.626Z",
+        "fullName": "Juan Garcia",
         "role": "customer",
         "email": "juan@mail.com",
-        "password": "$2b$10$VFfbjqcD45g6OE0TWxvc3eNOgl1Cr4acXRmnfrsMgIix1FBl38Be.",
-        "avatar": "aaaaaa.png"
+        "password": "$2b$10$Cx0DXvUVzKv64LuNbkLGmuykKCcrF/1SHCNkqut7rTVJ.xlBX9.ZK",
+        "avatar": "https://n9.cl/books-api"
       }
       // otros
     ]
@@ -412,36 +412,36 @@ Leer este documento en [English](https://github.com/Juancamilo21/books-api/blob/
   ```
 - ### Obtener un solo usuario
   ```bash
-  [GET] https://api/v1/users/3
+  [GET] https://api/users/2
   ```
   ```json
   {
     "message": "Successfully",
     "statusCode": 200,
     "data": {
-      "id": 3,
-      "createdAt": "2024-06-09T01:35:28.439Z",
-      "updatedAt": "2024-06-09T01:35:28.439Z",
-      "fullName": "Juan Arrieta",
+      "id": 2,
+      "createdAt": "2024-06-10T14:33:26.626Z",
+      "updatedAt": "2024-06-10T14:33:26.626Z",
+      "fullName": "Juan Garcia",
       "role": "customer",
       "email": "juan@mail.com",
-      "password": "$2b$10$VFfbjqcD45g6OE0TWxvc3eNOgl1Cr4acXRmnfrsMgIix1FBl38Be.",
-      "avatar": "aaaaaa.png"
+      "password": "$2b$10$Cx0DXvUVzKv64LuNbkLGmuykKCcrF/1SHCNkqut7rTVJ.xlBX9.ZK",
+      "avatar": "https://n9.cl/books-api"
     }
   }
   ```
 - ### Crear un usuario
 
   ```bash
-  [POST] https://api/v1/users
+  [POST] https://api/users
   ```
 
   ```json
   {
-    "fullName": "Juan Arrieta",
+    "fullName": "Juan Garcia",
     "email": "juan@mail.com",
     "password": "juan123",
-    "avatar": "aaaaaa.png"
+    "avatar": "https://n9.cl/books-api"
   }
   ```
 
@@ -452,12 +452,12 @@ Leer este documento en [English](https://github.com/Juancamilo21/books-api/blob/
     "message": "Created",
     "statusCode": 201,
     "data": {
-      "fullName": "Juan Arrieta",
+      "fullName": "Juan Garcia",
       "email": "juan@mail.com",
-      "password": "$2b$10$VFfbjqcD45g6OE0TWxvc3eNOgl1Cr4acXRmnfrsMgIix1FBl38Be.",
-      "avatar": "aaaaaa.png",
+      "password": "$2b$10$Cx0DXvUVzKv64LuNbkLGmuykKCcrF/1SHCNkqut7rTVJ.xlBX9.ZK",
+      "avatar": "https://n9.cl/books-api",
       "role": "customer",
-      "id": 3,
+      "id": 2,
       "createdAt": "2024-06-09T01:35:28.439Z",
       "updatedAt": "2024-06-09T01:35:28.439Z"
     }
