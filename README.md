@@ -11,14 +11,14 @@ Leer este documento en [English](https://github.com/Juancamilo21/books-api/blob/
   - [Libros](#libros)
     - [Obtener todos los libros](#obtener-todos-los-libros)
     - [Obtener un solo libro](#obtener-un-solo-libro)
+    - [Crear un libro](#crear-un-libro)
+    - [Actualiar un libro](#actualizar-un-libro)
+    - [Eliminar un libro](#eliminar-un-libro)
     - [Filtros](#filtros)
       - [Filtrar por isbn](#filtrar-por-isbn)
       - [Filtrar por titulo](#filtrar-por-titulo)
       - [Filtrar por genero](#filtrar-por-genero)
       - [Paginación](#paginación)
-    - [Crear un libro](#crear-un-libro)
-    - [Actualiar un libro](#actualizar-un-libro)
-    - [Eliminar un libro](#eliminar-un-libro)
   - [Generos](#generos)
     - [Obtener todos los generos](#obtener-todos-los-generos)
     - [Obtener un solo genero](#obtener-un-solo-genero)
@@ -69,9 +69,11 @@ Leer este documento en [English](https://github.com/Juancamilo21/books-api/blob/
   }
   ```
 - ### Obtener un solo libro
+
   ```bash
   [GET] https://api/v1/books/2
   ```
+
   ```json
   {
     "message": "Successfully",
@@ -89,6 +91,84 @@ Leer este documento en [English](https://github.com/Juancamilo21/books-api/blob/
       "publicationDate": "1967-05-30T00:00:00.000Z"
     }
   }
+  ```
+
+- ### Crear un libro
+
+  ```bash
+  [POST] https://api/v1/books
+  ```
+
+  ```json
+  {
+    "title": "Harry Potter y la piedra filosofal",
+    "isbn": "978-84-9838-058-4",
+    "author": "J.K. Rowling",
+    "description": "Harry Potter y la piedra filosofal es el primer libro de la serie Harry Potter escrita por la autora británica J.K. Rowling.",
+    "pagesNumber": 256,
+    "editorial": "Salani Editore",
+    "publicationDate": "1997-06-26T00:00:00.000Z",
+    "genreId": 2
+  }
+  ```
+
+  #### Respuesta
+
+  ```json
+  {
+    "message": "Created",
+    "statusCode": 201,
+    "data": {
+      "title": "Harry Potter y la piedra filosofal",
+      "isbn": "978-84-9838-058-4",
+      "author": "J.K. Rowling",
+      "description": "Harry Potter y la piedra filosofal es el primer libro de la serie Harry Potter escrita por la autora británica J.K. Rowling.",
+      "pagesNumber": 256,
+      "editorial": "Salani Editore",
+      "publicationDate": "1997-06-26T00:00:00.000Z",
+      "genreId": 2
+    }
+  }
+  ```
+
+- ### Actualizar un libro
+
+  ```bash
+  [PUT] https://api/v1/books/2
+  ```
+
+  ```json
+  {
+    "title": "Harry Potter y la piedra filosofal, primera pelicula"
+  }
+  ```
+
+  #### Respuesta
+
+  ```json
+  {
+    "message": "Successfully",
+    "statusCode": 200,
+    "data": {
+      "title": "Harry Potter y la piedra filosofal, primera pelicula",
+      "isbn": "978-84-9838-058-4",
+      "author": "J.K. Rowling",
+      "description": "Harry Potter y la piedra filosofal es el primer libro de la serie Harry Potter escrita por la autora británica J.K. Rowling.",
+      "pagesNumber": 256,
+      "editorial": "Salani Editore",
+      "publicationDate": "1997-06-26T00:00:00.000Z",
+      "genreId": 2
+    }
+  }
+  ```
+
+- ### Eliminar un libro
+  ```bash
+  [DELETE] https://api/v1/books/2
+  ```
+  #### Respuesta
+  ```bash
+  204 # No Content
   ```
 
 ## Filtros
@@ -191,84 +271,6 @@ Leer este documento en [English](https://github.com/Juancamilo21/books-api/blob/
       "publicationDate": "1997-06-26T00:00:00.000Z"
     }
   }
-  ```
-
-- ### Crear un libro
-
-  ```bash
-  [POST] https://api/v1/books
-  ```
-
-  ```json
-  {
-    "title": "Harry Potter y la piedra filosofal",
-    "isbn": "978-84-9838-058-4",
-    "author": "J.K. Rowling",
-    "description": "Harry Potter y la piedra filosofal es el primer libro de la serie Harry Potter escrita por la autora británica J.K. Rowling.",
-    "pagesNumber": 256,
-    "editorial": "Salani Editore",
-    "publicationDate": "1997-06-26T00:00:00.000Z",
-    "genreId": 2
-  }
-  ```
-
-  #### Respuesta
-
-  ```json
-  {
-    "message": "Created",
-    "statusCode": 201,
-    "data": {
-      "title": "Harry Potter y la piedra filosofal",
-      "isbn": "978-84-9838-058-4",
-      "author": "J.K. Rowling",
-      "description": "Harry Potter y la piedra filosofal es el primer libro de la serie Harry Potter escrita por la autora británica J.K. Rowling.",
-      "pagesNumber": 256,
-      "editorial": "Salani Editore",
-      "publicationDate": "1997-06-26T00:00:00.000Z",
-      "genreId": 2
-    }
-  }
-  ```
-
-- ### Actualizar un libro
-
-  ```bash
-  [PUT] https://api/v1/books/2
-  ```
-
-  ```json
-  {
-    "title": "Harry Potter y la piedra filosofal, primera pelicula"
-  }
-  ```
-
-  #### Respuesta
-
-  ```json
-  {
-    "message": "Successfully",
-    "statusCode": 200,
-    "data": {
-      "title": "Harry Potter y la piedra filosofal, primera pelicula",
-      "isbn": "978-84-9838-058-4",
-      "author": "J.K. Rowling",
-      "description": "Harry Potter y la piedra filosofal es el primer libro de la serie Harry Potter escrita por la autora británica J.K. Rowling.",
-      "pagesNumber": 256,
-      "editorial": "Salani Editore",
-      "publicationDate": "1997-06-26T00:00:00.000Z",
-      "genreId": 2
-    }
-  }
-  ```
-
-- ### Eliminar un libro
-  ```bash
-  [DELETE] https://api/v1/books/2
-  ```
-  #### Respuesta
-  ```bash
-  204 # No Content
   ```
 
 ## Generos
