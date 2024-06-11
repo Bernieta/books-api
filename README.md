@@ -45,7 +45,7 @@ Leer este documento en [English](https://github.com/Juancamilo21/books-api/blob/
 
 - ### Obtener todos los libros
   ```bash
-  [GET] https://api/v1/books
+  [GET] https://api/books
   ```
   ```json
   {
@@ -54,15 +54,23 @@ Leer este documento en [English](https://github.com/Juancamilo21/books-api/blob/
     "data": [
       {
         "id": 1,
-        "createdAt": "2024-05-01T14:36:21.305Z",
-        "updatedAt": "2024-05-01T14:36:21.305Z",
-        "title": "El principito",
-        "isbn": "978-84-204-5391-4",
-        "author": "Antoine de Saint-Exupéry",
-        "description": "El principito es una novela corta y la obra más famosa del escritor y aviador francés Antoine de Saint-Exupéry.",
-        "pagesNumber": 96,
-        "editorial": "Salamandra",
-        "publicationDate": "1943-04-06T05:00:00.000Z"
+        "createdAt": "2024-06-11T06:29:47.585Z",
+        "updatedAt": "2024-06-11T06:29:47.585Z",
+        "title": "Contacto",
+        "isbn": "9788417347130",
+        "author": "Carl Sagan",
+        "description": "Contacto es la única novela escrita por el astrónomo estadounidense Carl Sagan, uno de los mayores divulgadores científicos del siglo XX.",
+        "pagesNumber": 432,
+        "editorial": "NOVA",
+        "publicationDate": "2018-03-06T00:00:00.000Z",
+        "image": "https://n9.cl/pjt9b",
+        "genre": {
+          "id": 1,
+          "createdAt": "2024-06-11T06:04:58.203Z",
+          "updatedAt": "2024-06-11T06:31:08.408Z",
+          "genreName": "Ciencia Ficción",
+          "image": "https://n9.cl/82b4pn"
+        }
       }
       // otros...
     ]
@@ -71,7 +79,7 @@ Leer este documento en [English](https://github.com/Juancamilo21/books-api/blob/
 - ### Obtener un solo libro
 
   ```bash
-  [GET] https://api/v1/books/2
+  [GET] https://api/books/1
   ```
 
   ```json
@@ -79,16 +87,24 @@ Leer este documento en [English](https://github.com/Juancamilo21/books-api/blob/
     "message": "Successfully",
     "statusCode": 200,
     "data": {
-      "id": 2,
-      "createdAt": "2024-05-01T14:41:59.496Z",
-      "updatedAt": "2024-05-01T14:41:59.496Z",
-      "title": "Cien años de soledad",
-      "isbn": "978-84-376-2312-1",
-      "author": "Gabriel García Márquez",
-      "description": "Cien años de soledad es una novela del escritor colombiano Gabriel García Márquez, ganador del Premio Nobel de Literatura en 1982.",
+      "id": 1,
+      "createdAt": "2024-06-11T06:29:47.585Z",
+      "updatedAt": "2024-06-11T06:29:47.585Z",
+      "title": "Contacto",
+      "isbn": "9788417347130",
+      "author": "Carl Sagan",
+      "description": "Contacto es la única novela escrita por el astrónomo estadounidense Carl Sagan, uno de los mayores divulgadores científicos del siglo XX.",
       "pagesNumber": 432,
-      "editorial": "Editorial Sudamericana",
-      "publicationDate": "1967-05-30T00:00:00.000Z"
+      "editorial": "NOVA",
+      "publicationDate": "2018-03-06T00:00:00.000Z",
+      "image": "https://n9.cl/pjt9b",
+      "genre": {
+        "id": 1,
+        "createdAt": "2024-06-11T06:04:58.203Z",
+        "updatedAt": "2024-06-11T06:31:08.408Z",
+        "genreName": "Ciencia Ficción",
+        "image": "https://n9.cl/82b4pn"
+      }
     }
   }
   ```
@@ -101,14 +117,15 @@ Leer este documento en [English](https://github.com/Juancamilo21/books-api/blob/
 
   ```json
   {
-    "title": "Harry Potter y la piedra filosofal",
-    "isbn": "978-84-9838-058-4",
-    "author": "J.K. Rowling",
-    "description": "Harry Potter y la piedra filosofal es el primer libro de la serie Harry Potter escrita por la autora británica J.K. Rowling.",
-    "pagesNumber": 256,
-    "editorial": "Salani Editore",
-    "publicationDate": "1997-06-26T00:00:00.000Z",
-    "genreId": 2
+    "title": "Contacto",
+    "isbn": "9788417347130", // Asegurarse de que sea un isbn valido
+    "author": "Carl Sagan",
+    "description": "Contacto es la única novela escrita por el astrónomo estadounidense Carl Sagan, uno de los mayores divulgadores científicos del siglo XX.",
+    "pagesNumber": 432,
+    "editorial": "NOVA",
+    "publicationDate": "2018-03-06",
+    "image": "https://n9.cl/pjt9b",
+    "genreId": 1
   }
   ```
 
@@ -119,14 +136,24 @@ Leer este documento en [English](https://github.com/Juancamilo21/books-api/blob/
     "message": "Created",
     "statusCode": 201,
     "data": {
-      "title": "Harry Potter y la piedra filosofal",
-      "isbn": "978-84-9838-058-4",
-      "author": "J.K. Rowling",
-      "description": "Harry Potter y la piedra filosofal es el primer libro de la serie Harry Potter escrita por la autora británica J.K. Rowling.",
-      "pagesNumber": 256,
-      "editorial": "Salani Editore",
-      "publicationDate": "1997-06-26T00:00:00.000Z",
-      "genreId": 2
+      "title": "Contacto",
+      "isbn": "9788417347130",
+      "author": "Carl Sagan",
+      "description": "Contacto es la única novela escrita por el astrónomo estadounidense Carl Sagan, uno de los mayores divulgadores científicos del siglo XX.",
+      "pagesNumber": 432,
+      "editorial": "NOVA",
+      "publicationDate": "2018-03-06T00:00:00.000Z",
+      "image": "https://n9.cl/pjt9b",
+      "genre": {
+        "id": 1,
+        "createdAt": "2024-06-11T06:04:58.203Z",
+        "updatedAt": "2024-06-11T06:27:24.559Z",
+        "genreName": "Ciencia Ficción",
+        "image": "https://n9.cl/82b4pn"
+      },
+      "id": 1,
+      "createdAt": "2024-06-11T06:29:47.585Z",
+      "updatedAt": "2024-06-11T06:29:47.585Z"
     }
   }
   ```
@@ -134,12 +161,12 @@ Leer este documento en [English](https://github.com/Juancamilo21/books-api/blob/
 - ### Actualizar un libro
 
   ```bash
-  [PUT] https://api/v1/books/2
+  [PUT] https://api/books/1
   ```
 
   ```json
   {
-    "title": "Harry Potter y la piedra filosofal, primera pelicula"
+    "title": "Contact"
   }
   ```
 
@@ -150,21 +177,31 @@ Leer este documento en [English](https://github.com/Juancamilo21/books-api/blob/
     "message": "Successfully",
     "statusCode": 200,
     "data": {
-      "title": "Harry Potter y la piedra filosofal, primera pelicula",
-      "isbn": "978-84-9838-058-4",
-      "author": "J.K. Rowling",
-      "description": "Harry Potter y la piedra filosofal es el primer libro de la serie Harry Potter escrita por la autora británica J.K. Rowling.",
-      "pagesNumber": 256,
-      "editorial": "Salani Editore",
-      "publicationDate": "1997-06-26T00:00:00.000Z",
-      "genreId": 2
+      "id": 1,
+      "createdAt": "2024-06-11T06:29:47.585Z",
+      "updatedAt": "2024-06-11T06:37:16.888Z",
+      "title": "Contact",
+      "isbn": "9788417347130",
+      "author": "Carl Sagan",
+      "description": "Contacto es la única novela escrita por el astrónomo estadounidense Carl Sagan, uno de los mayores divulgadores científicos del siglo XX.",
+      "pagesNumber": 432,
+      "editorial": "NOVA",
+      "publicationDate": "2018-03-06T00:00:00.000Z",
+      "image": "https://n9.cl/pjt9b",
+      "genre": {
+        "id": 1,
+        "createdAt": "2024-06-11T06:04:58.203Z",
+        "updatedAt": "2024-06-11T06:31:08.408Z",
+        "genreName": "Ciencia Ficción",
+        "image": "https://n9.cl/82b4pn"
+      }
     }
   }
   ```
 
 - ### Eliminar un libro
   ```bash
-  [DELETE] https://api/v1/books/2
+  [DELETE] https://api/books/{id}
   ```
   #### Respuesta
   ```bash
@@ -176,75 +213,106 @@ Leer este documento en [English](https://github.com/Juancamilo21/books-api/blob/
 - ### Filtrar por isbn
 
   ```bash
-  [GET] https://api/v1/books/?isbn=9788498380584
+  [GET] https://api/v1/books/?isbn=9788417347130 # Asegurarse de que sea un isbn valido
   ```
 
   ```json
   {
     "message": "Successfully",
     "statusCode": 200,
-    "data": {
-      "id": 3,
-      "createdAt": "2024-05-01T14:42:29.056Z",
-      "updatedAt": "2024-05-01T14:47:44.337Z",
-      "title": "Harry Potter y la piedra filosofal",
-      "isbn": "978-84-9838-058-4",
-      "author": "J.K. Rowling",
-      "description": "Harry Potter y la piedra filosofal es el primer libro de la serie Harry Potter escrita por la autora británica J.K. Rowling.",
-      "pagesNumber": 256,
-      "editorial": "Salani Editore",
-      "publicationDate": "1997-06-26T00:00:00.000Z"
-    }
+    "data": [
+      {
+        "id": 1,
+        "createdAt": "2024-06-11T06:29:47.585Z",
+        "updatedAt": "2024-06-11T06:38:16.019Z",
+        "title": "Contacto",
+        "isbn": "9788417347130",
+        "author": "Carl Sagan",
+        "description": "Contacto es la única novela escrita por el astrónomo estadounidense Carl Sagan, uno de los mayores divulgadores científicos del siglo XX.",
+        "pagesNumber": 432,
+        "editorial": "NOVA",
+        "publicationDate": "2018-03-06T00:00:00.000Z",
+        "image": "https://n9.cl/pjt9b",
+        "genre": {
+          "id": 1,
+          "createdAt": "2024-06-11T06:04:58.203Z",
+          "updatedAt": "2024-06-11T06:31:08.408Z",
+          "genreName": "Ciencia Ficción",
+          "image": "https://n9.cl/82b4pn"
+        }
+      }
+    ]
   }
   ```
 
 - ### Filtrar por titulo
 
   ```bash
-  [GET] https://api/v1/books/?title=Harry Potter y la piedra filosofal
+  [GET] https://api/v1/books/?title=Contacto # Los resultados muestran las coincidencias encontradas
   ```
 
   ```json
   {
     "message": "Successfully",
     "statusCode": 200,
-    "data": {
-      "id": 3,
-      "createdAt": "2024-05-01T14:42:29.056Z",
-      "updatedAt": "2024-05-01T14:47:44.337Z",
-      "title": "Harry Potter y la piedra filosofal",
-      "isbn": "978-84-9838-058-4",
-      "author": "J.K. Rowling",
-      "description": "Harry Potter y la piedra filosofal es el primer libro de la serie Harry Potter escrita por la autora británica J.K. Rowling.",
-      "pagesNumber": 256,
-      "editorial": "Salani Editore",
-      "publicationDate": "1997-06-26T00:00:00.000Z"
-    }
+    "data": [
+      {
+        "id": 1,
+        "createdAt": "2024-06-11T06:29:47.585Z",
+        "updatedAt": "2024-06-11T06:38:16.019Z",
+        "title": "Contacto",
+        "isbn": "9788417347130",
+        "author": "Carl Sagan",
+        "description": "Contacto es la única novela escrita por el astrónomo estadounidense Carl Sagan, uno de los mayores divulgadores científicos del siglo XX.",
+        "pagesNumber": 432,
+        "editorial": "NOVA",
+        "publicationDate": "2018-03-06T00:00:00.000Z",
+        "image": "https://n9.cl/pjt9b",
+        "genre": {
+          "id": 1,
+          "createdAt": "2024-06-11T06:04:58.203Z",
+          "updatedAt": "2024-06-11T06:31:08.408Z",
+          "genreName": "Ciencia Ficción",
+          "image": "https://n9.cl/82b4pn"
+        }
+      }
+      // otros resultados que coincidan
+    ]
   }
   ```
 
 - ### Filtrar por genero
 
   ```bash
-  [GET] https://api/v1/books/?genreId=2
+  [GET] https://api/v1/books/?genreId=1
   ```
 
   ```json
   {
     "message": "Successfully",
     "statusCode": 200,
-    "data": {
-      "id": 3,
-      "createdAt": "2024-05-01T14:42:29.056Z",
-      "updatedAt": "2024-05-01T14:47:44.337Z",
-      "title": "Harry Potter y la piedra filosofal",
-      "isbn": "978-84-9838-058-4",
-      "author": "J.K. Rowling",
-      "description": "Harry Potter y la piedra filosofal es el primer libro de la serie Harry Potter escrita por la autora británica J.K. Rowling.",
-      "pagesNumber": 256,
-      "editorial": "Salani Editore",
-      "publicationDate": "1997-06-26T00:00:00.000Z"
-    }
+    "data": [
+      {
+        "id": 1,
+        "createdAt": "2024-06-11T06:29:47.585Z",
+        "updatedAt": "2024-06-11T06:38:16.019Z",
+        "title": "Contacto",
+        "isbn": "9788417347130",
+        "author": "Carl Sagan",
+        "description": "Contacto es la única novela escrita por el astrónomo estadounidense Carl Sagan, uno de los mayores divulgadores científicos del siglo XX.",
+        "pagesNumber": 432,
+        "editorial": "NOVA",
+        "publicationDate": "2018-03-06T00:00:00.000Z",
+        "image": "https://n9.cl/pjt9b",
+        "genre": {
+          "id": 1,
+          "createdAt": "2024-06-11T06:04:58.203Z",
+          "updatedAt": "2024-06-11T06:31:08.408Z",
+          "genreName": "Ciencia Ficción",
+          "image": "https://n9.cl/82b4pn"
+        }
+      }
+    ]
   }
   ```
 
@@ -258,18 +326,29 @@ Leer este documento en [English](https://github.com/Juancamilo21/books-api/blob/
   {
     "message": "Successfully",
     "statusCode": 200,
-    "data": {
-      "id": 3,
-      "createdAt": "2024-05-01T14:42:29.056Z",
-      "updatedAt": "2024-05-01T14:47:44.337Z",
-      "title": "Harry Potter y la piedra filosofal",
-      "isbn": "978-84-9838-058-4",
-      "author": "J.K. Rowling",
-      "description": "Harry Potter y la piedra filosofal es el primer libro de la serie Harry Potter escrita por la autora británica J.K. Rowling.",
-      "pagesNumber": 256,
-      "editorial": "Salani Editore",
-      "publicationDate": "1997-06-26T00:00:00.000Z"
-    }
+    "data": [
+      {
+        "id": 1,
+        "createdAt": "2024-06-11T06:29:47.585Z",
+        "updatedAt": "2024-06-11T06:38:16.019Z",
+        "title": "Contacto",
+        "isbn": "9788417347130",
+        "author": "Carl Sagan",
+        "description": "Contacto es la única novela escrita por el astrónomo estadounidense Carl Sagan, uno de los mayores divulgadores científicos del siglo XX.",
+        "pagesNumber": 432,
+        "editorial": "NOVA",
+        "publicationDate": "2018-03-06T00:00:00.000Z",
+        "image": "https://n9.cl/pjt9b",
+        "genre": {
+          "id": 1,
+          "createdAt": "2024-06-11T06:04:58.203Z",
+          "updatedAt": "2024-06-11T06:31:08.408Z",
+          "genreName": "Ciencia Ficción",
+          "image": "https://n9.cl/82b4pn"
+        }
+      }
+    ]
+    // Otros resultados
   }
   ```
 
@@ -278,7 +357,7 @@ Leer este documento en [English](https://github.com/Juancamilo21/books-api/blob/
 - ### Obtener todos los generos
 
   ```bash
-  [GET] https://api/v1/genres
+  [GET] https://api/genres
   ```
 
   ```json
@@ -287,11 +366,11 @@ Leer este documento en [English](https://github.com/Juancamilo21/books-api/blob/
     "statusCode": 200,
     "data": [
       {
-        "id": 2,
-        "createdAt": "2024-06-10T00:49:30.389Z",
-        "updatedAt": "2024-06-10T00:49:30.389Z",
-        "genreName": "Ciencia y tecnología",
-        "image": "ggg.png"
+        "id": 1,
+        "createdAt": "2024-06-11T06:04:58.203Z",
+        "updatedAt": "2024-06-11T06:07:32.464Z",
+        "genreName": "Ficción",
+        "image": "https://n9.cl/82b4pn"
       }
       // otros
     ]
@@ -301,7 +380,7 @@ Leer este documento en [English](https://github.com/Juancamilo21/books-api/blob/
 - ### Obtener un solo genero
 
   ```bash
-  [GET] https://api/v1/genres/2
+  [GET] https://api/genres/1
   ```
 
   ```json
@@ -309,11 +388,11 @@ Leer este documento en [English](https://github.com/Juancamilo21/books-api/blob/
     "message": "Successfully",
     "statusCode": 200,
     "data": {
-      "id": 2,
-      "createdAt": "2024-06-10T00:49:30.389Z",
-      "updatedAt": "2024-06-10T00:49:30.389Z",
-      "genreName": "Ciencia y tecnología",
-      "image": "ggg.png"
+      "id": 1,
+      "createdAt": "2024-06-11T06:04:58.203Z",
+      "updatedAt": "2024-06-11T06:07:32.464Z",
+      "genreName": "Ficción",
+      "image": "https://n9.cl/82b4pn"
     }
   }
   ```
@@ -321,13 +400,13 @@ Leer este documento en [English](https://github.com/Juancamilo21/books-api/blob/
 - ### Crear un genero
 
   ```bash
-  [POST] https://api/v1/genres
+  [POST] https://api/genres
   ```
 
   ```json
   {
-    "genreName": "Ciencia y tecnología",
-    "image": "ggg.png"
+    "genreName": "Ficción",
+    "image": "https://n9.cl/82b4pn"
   }
   ```
 
@@ -338,11 +417,11 @@ Leer este documento en [English](https://github.com/Juancamilo21/books-api/blob/
     "message": "Created",
     "statusCode": 201,
     "data": {
-      "genreName": "Ciencia y tecnología",
-      "image": "ggg.png",
-      "id": 2,
-      "createdAt": "2024-06-10T00:49:30.389Z",
-      "updatedAt": "2024-06-10T00:49:30.389Z"
+      "genreName": "Ficción",
+      "image": "https://n9.cl/82b4pn",
+      "id": 1,
+      "createdAt": "2024-06-11T06:04:58.203Z",
+      "updatedAt": "2024-06-11T06:04:58.203Z"
     }
   }
   ```
@@ -350,12 +429,12 @@ Leer este documento en [English](https://github.com/Juancamilo21/books-api/blob/
 - ### Actualizar un genero
 
   ```bash
-  [PUT] https://api/v1/genres/2
+  [PUT] https://api/genres/1
   ```
 
   ```json
   {
-    "genreName": "Ciencias tecnológicas"
+    "genreName": "Ciencia Ficción"
   }
   ```
 
@@ -366,11 +445,11 @@ Leer este documento en [English](https://github.com/Juancamilo21/books-api/blob/
     "message": "Successfully",
     "statusCode": 200,
     "data": {
-      "id": 2,
-      "createdAt": "2024-06-10T00:49:30.389Z",
-      "updatedAt": "2024-06-10T01:04:34.269Z",
-      "genreName": "Ciencias tecnológicas",
-      "image": "ggg.png"
+      "id": 1,
+      "createdAt": "2024-06-11T06:04:58.203Z",
+      "updatedAt": "2024-06-11T06:07:32.464Z",
+      "genreName": "Ciencia Ficción",
+      "image": "https://n9.cl/82b4pn"
     }
   }
   ```
@@ -378,7 +457,7 @@ Leer este documento en [English](https://github.com/Juancamilo21/books-api/blob/
 - ### Eliminar un genero
 
   ```bash
-  [DELETE] https://api/v1/genres/2
+  [DELETE] https://api/genres/{id}
   ```
 
   ```bash
@@ -397,13 +476,13 @@ Leer este documento en [English](https://github.com/Juancamilo21/books-api/blob/
     "statusCode": 200,
     "data": [
       {
-        "id": 2,
-        "createdAt": "2024-06-10T14:33:26.626Z",
-        "updatedAt": "2024-06-10T14:33:26.626Z",
+        "id": 1,
+        "createdAt": "2024-06-10T20:22:29.403Z",
+        "updatedAt": "2024-06-10T20:22:29.403Z",
         "fullName": "Juan Garcia",
         "role": "customer",
         "email": "juan@mail.com",
-        "password": "$2b$10$Cx0DXvUVzKv64LuNbkLGmuykKCcrF/1SHCNkqut7rTVJ.xlBX9.ZK",
+        "password": "$2b$10$bu3vXhnk/.4YtXjacG2RJ.b4ivy.JMR1Ms.1KEO09P4yiwv7IWlhG",
         "avatar": "https://n9.cl/books-api"
       }
       // otros
@@ -412,20 +491,20 @@ Leer este documento en [English](https://github.com/Juancamilo21/books-api/blob/
   ```
 - ### Obtener un solo usuario
   ```bash
-  [GET] https://api/users/2
+  [GET] https://api/users/1
   ```
   ```json
   {
     "message": "Successfully",
     "statusCode": 200,
     "data": {
-      "id": 2,
-      "createdAt": "2024-06-10T14:33:26.626Z",
-      "updatedAt": "2024-06-10T14:33:26.626Z",
+      "id": 1,
+      "createdAt": "2024-06-10T20:22:29.403Z",
+      "updatedAt": "2024-06-10T20:22:29.403Z",
       "fullName": "Juan Garcia",
       "role": "customer",
       "email": "juan@mail.com",
-      "password": "$2b$10$Cx0DXvUVzKv64LuNbkLGmuykKCcrF/1SHCNkqut7rTVJ.xlBX9.ZK",
+      "password": "$2b$10$bu3vXhnk/.4YtXjacG2RJ.b4ivy.JMR1Ms.1KEO09P4yiwv7IWlhG",
       "avatar": "https://n9.cl/books-api"
     }
   }
@@ -454,23 +533,23 @@ Leer este documento en [English](https://github.com/Juancamilo21/books-api/blob/
     "data": {
       "fullName": "Juan Garcia",
       "email": "juan@mail.com",
-      "password": "$2b$10$Cx0DXvUVzKv64LuNbkLGmuykKCcrF/1SHCNkqut7rTVJ.xlBX9.ZK",
+      "password": "$2b$10$bu3vXhnk/.4YtXjacG2RJ.b4ivy.JMR1Ms.1KEO09P4yiwv7IWlhG",
       "avatar": "https://n9.cl/books-api",
       "role": "customer",
-      "id": 2,
-      "createdAt": "2024-06-09T01:35:28.439Z",
-      "updatedAt": "2024-06-09T01:35:28.439Z"
+      "id": 1,
+      "createdAt": "2024-06-10T20:22:29.403Z",
+      "updatedAt": "2024-06-10T20:22:29.403Z"
     }
   }
   ```
 
 - ### Actualizar un usuario
   ```bash
-  [PUT] https://api/v1/users/3
+  [PUT] https://api/users/3
   ```
   ```json
   {
-    "fullName": "Juan Arrieta Bernal"
+    "fullName": "Juan Garcia Paredes"
   }
   ```
   #### Respuesta
@@ -479,20 +558,20 @@ Leer este documento en [English](https://github.com/Juancamilo21/books-api/blob/
     "message": "Successfully",
     "statusCode": 200,
     "data": {
-      "fullName": "Juan Arrieta Bernal",
-      "email": "juan@mail.com",
-      "password": "$2b$10$VFfbjqcD45g6OE0TWxvc3eNOgl1Cr4acXRmnfrsMgIix1FBl38Be.",
-      "avatar": "aaaaaa.png",
+      "id": 1,
+      "createdAt": "2024-06-10T20:22:29.403Z",
+      "updatedAt": "2024-06-10T20:29:47.423Z",
+      "fullName": "Juan Garcia Paredes",
       "role": "customer",
-      "id": 3,
-      "createdAt": "2024-06-09T01:35:28.439Z",
-      "updatedAt": "2024-06-09T01:35:28.439Z"
+      "email": "juan@mail.com",
+      "password": "$2b$10$bu3vXhnk/.4YtXjacG2RJ.b4ivy.JMR1Ms.1KEO09P4yiwv7IWlhG",
+      "avatar": "https://n9.cl/books-api"
     }
   }
   ```
 - ### Eliminar un usuario
   ```bash
-  [DELETE] https://api/v1/users/3
+  [DELETE] https://api/users/{id}
   ```
   #### Respuesta:
   ```bash
@@ -504,7 +583,7 @@ Leer este documento en [English](https://github.com/Juancamilo21/books-api/blob/
 - ### Login
 
   ```bash
-  [POST] https://api/v1/auth/login
+  [POST] https://api/auth/login
   ```
 
   ```json
@@ -521,20 +600,20 @@ Leer este documento en [English](https://github.com/Juancamilo21/books-api/blob/
   {
     "message": "Successfully",
     "statusCode": 200,
-    "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjMsImlhdCI6MTcxNzg5Njk2MSwiZXhwIjoxNzE3ODk3MDgxfQ.GIaIRlAVS0FM6eaO0Kyxfc1VtTBWwNx7wRxA6BndAzY"
+    "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImlhdCI6MTcxODAzMzYzMCwiZXhwIjoxNzE4MDMzNzUwfQ.4Y6nH3zltyZf7qxl1V7Mm1J4OuYCrw0x7Zs3v9pT5rA"
   }
   ```
 
 - ### Perfil
 
   ```bash
-  [GET] https://api/v1/auth/profile
+  [GET] https://api/auth/profile
   ```
 
   ```json
   // Headers
   {
-    "Authorization": "Bearer { your access token }"
+    "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImlhdCI6MTcxODAzMzYzMCwiZXhwIjoxNzE4MDMzNzUwfQ.4Y6nH3zltyZf7qxl1V7Mm1J4OuYCrw0x7Zs3v9pT5rA"
   }
   ```
 
@@ -545,14 +624,14 @@ Leer este documento en [English](https://github.com/Juancamilo21/books-api/blob/
     "message": "Successfully",
     "statusCode": 200,
     "data": {
-      "id": 3,
-      "createdAt": "2024-06-09T01:35:28.439Z",
-      "updatedAt": "2024-06-09T01:35:28.439Z",
-      "fullName": "Juan Arrieta",
+      "id": 1,
+      "createdAt": "2024-06-10T20:22:29.403Z",
+      "updatedAt": "2024-06-10T20:29:47.423Z",
+      "fullName": "Juan Garcia Paredes",
       "role": "customer",
       "email": "juan@mail.com",
-      "password": "$2b$10$VFfbjqcD45g6OE0TWxvc3eNOgl1Cr4acXRmnfrsMgIix1FBl38Be.",
-      "avatar": "aaaaaa.png"
+      "password": "$2b$10$bu3vXhnk/.4YtXjacG2RJ.b4ivy.JMR1Ms.1KEO09P4yiwv7IWlhG",
+      "avatar": "https://n9.cl/books-api"
     }
   }
   ```

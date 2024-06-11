@@ -1,11 +1,8 @@
-/**
- This datasource is only used for migrations
- */
 import { DataSource } from 'typeorm';
 import { SnakeNamingStrategy } from 'typeorm-naming-strategies';
 import * as dotenv from 'dotenv';
 
-dotenv.config({ path: '.env.development' });
+dotenv.config({ path: `.env.${process.env.NODE_ENV}` })
 
 export const AppDatasource = new DataSource({
   type: 'postgres',
@@ -19,5 +16,6 @@ export const AppDatasource = new DataSource({
   migrationsRun: true,
   synchronize: false,
   logging: true,
+  ssl: true,
   namingStrategy: new SnakeNamingStrategy(),
 });
