@@ -6,12 +6,10 @@ import { GenreModule } from './modules/genres/genre.module';
 import { AuthModule } from './modules/auth/auth.module';
 import { ConfigModule } from '@nestjs/config';
 import config from './config/config';
-import environments from './config/environment';
 
 @Module({
   imports: [
     ConfigModule.forRoot({
-      envFilePath: environments[process.env.NODE_ENV] || '.env.development',
       load: [config],
       isGlobal: true,
     }),
