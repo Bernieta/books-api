@@ -2,7 +2,7 @@
 
 Books Api es una API REST pública que contiene información sobre libros de varios generos. Además, tambien puede registrar información de nuevos libros, actualizar y eliminar sobre los libros que usted agregue. Asimismo, también contiene sistema de autenticación de usuarios mediante JWT.
 
-Leer este documento en [English](https://github.com/Juancamilo21/books-api/blob/main/README_en.md) | [Swagger](https://api/v1/swagger)
+Leer este documento en [English](https://github.com/Juancamilo21/books-api/blob/main/README_en.md) | [Swagger](https://books-api-5lk8.onrender.com/docs)
 
 ## Tabla de Contenido
 
@@ -45,7 +45,7 @@ Leer este documento en [English](https://github.com/Juancamilo21/books-api/blob/
 
 - ### Obtener todos los libros
   ```bash
-  [GET] https://api/books
+  [GET] https://books-api-5lk8.onrender.com/api/books
   ```
   ```json
   {
@@ -79,7 +79,7 @@ Leer este documento en [English](https://github.com/Juancamilo21/books-api/blob/
 - ### Obtener un solo libro
 
   ```bash
-  [GET] https://api/books/1
+  [GET] https://books-api-5lk8.onrender.com/api/books/1
   ```
 
   ```json
@@ -112,7 +112,7 @@ Leer este documento en [English](https://github.com/Juancamilo21/books-api/blob/
 - ### Crear un libro
 
   ```bash
-  [POST] https://api/v1/books
+  [POST] https://books-api-5lk8.onrender.com/api/books
   ```
 
   ```json
@@ -161,7 +161,7 @@ Leer este documento en [English](https://github.com/Juancamilo21/books-api/blob/
 - ### Actualizar un libro
 
   ```bash
-  [PUT] https://api/books/1
+  [PUT] https://books-api-5lk8.onrender.com/api/books/1
   ```
 
   ```json
@@ -201,7 +201,7 @@ Leer este documento en [English](https://github.com/Juancamilo21/books-api/blob/
 
 - ### Eliminar un libro
   ```bash
-  [DELETE] https://api/books/{id}
+  [DELETE] https://books-api-5lk8.onrender.com/api/books/{id}
   ```
   #### Respuesta
   ```bash
@@ -213,7 +213,7 @@ Leer este documento en [English](https://github.com/Juancamilo21/books-api/blob/
 - ### Filtrar por isbn
 
   ```bash
-  [GET] https://api/v1/books/?isbn=9788417347130 # Asegurarse de que sea un isbn valido
+  [GET] https://books-api-5lk8.onrender.com/api/books?isbn=9788417347130 # Asegurarse de que sea un isbn valido
   ```
 
   ```json
@@ -248,7 +248,7 @@ Leer este documento en [English](https://github.com/Juancamilo21/books-api/blob/
 - ### Filtrar por titulo
 
   ```bash
-  [GET] https://api/v1/books/?title=Contacto # Los resultados muestran las coincidencias encontradas
+  [GET] https://books-api-5lk8.onrender.com/api/books?title=Contacto # Los resultados muestran las coincidencias encontradas
   ```
 
   ```json
@@ -284,7 +284,7 @@ Leer este documento en [English](https://github.com/Juancamilo21/books-api/blob/
 - ### Filtrar por genero
 
   ```bash
-  [GET] https://api/v1/books/?genreId=1
+  [GET] https://books-api-5lk8.onrender.com/api/books?genreId=1
   ```
 
   ```json
@@ -319,7 +319,7 @@ Leer este documento en [English](https://github.com/Juancamilo21/books-api/blob/
 - ### Paginación
 
   ```bash
-  [GET] https://api/v1/books/?limit=5&offset=0
+  [GET] https://books-api-5lk8.onrender.com/api/books?limit=5&offset=0
   ```
 
   ```json
@@ -357,7 +357,7 @@ Leer este documento en [English](https://github.com/Juancamilo21/books-api/blob/
 - ### Obtener todos los generos
 
   ```bash
-  [GET] https://api/genres
+  [GET] https://books-api-5lk8.onrender.com/api/genres
   ```
 
   ```json
@@ -380,7 +380,7 @@ Leer este documento en [English](https://github.com/Juancamilo21/books-api/blob/
 - ### Obtener un solo genero
 
   ```bash
-  [GET] https://api/genres/1
+  [GET] https://books-api-5lk8.onrender.com/api/genres/1
   ```
 
   ```json
@@ -400,7 +400,7 @@ Leer este documento en [English](https://github.com/Juancamilo21/books-api/blob/
 - ### Crear un genero
 
   ```bash
-  [POST] https://api/genres
+  [POST] https://books-api-5lk8.onrender.com/api/genres
   ```
 
   ```json
@@ -429,7 +429,7 @@ Leer este documento en [English](https://github.com/Juancamilo21/books-api/blob/
 - ### Actualizar un genero
 
   ```bash
-  [PUT] https://api/genres/1
+  [PUT] https://books-api-5lk8.onrender.com/api/genres/1
   ```
 
   ```json
@@ -457,7 +457,7 @@ Leer este documento en [English](https://github.com/Juancamilo21/books-api/blob/
 - ### Eliminar un genero
 
   ```bash
-  [DELETE] https://api/genres/{id}
+  [DELETE] https://books-api-5lk8.onrender.com/api/genres/{id}
   ```
 
   ```bash
@@ -468,7 +468,7 @@ Leer este documento en [English](https://github.com/Juancamilo21/books-api/blob/
 
 - ### Obtener todos los usuarios
   ```bash
-  [GET] https://api/users
+  [GET] https://books-api-5lk8.onrender.com/api/users
   ```
   ```json
   {
@@ -491,7 +491,7 @@ Leer este documento en [English](https://github.com/Juancamilo21/books-api/blob/
   ```
 - ### Obtener un solo usuario
   ```bash
-  [GET] https://api/users/1
+  [GET] https://books-api-5lk8.onrender.com/api/users/1
   ```
   ```json
   {
@@ -512,7 +512,7 @@ Leer este documento en [English](https://github.com/Juancamilo21/books-api/blob/
 - ### Crear un usuario
 
   ```bash
-  [POST] https://api/users
+  [POST] https://books-api-5lk8.onrender.com/api/users
   ```
 
   ```json
@@ -545,7 +545,7 @@ Leer este documento en [English](https://github.com/Juancamilo21/books-api/blob/
 
 - ### Actualizar un usuario
   ```bash
-  [PUT] https://api/users/3
+  [PUT] https://books-api-5lk8.onrender.com/api/users/1
   ```
   ```json
   {
@@ -571,7 +571,7 @@ Leer este documento en [English](https://github.com/Juancamilo21/books-api/blob/
   ```
 - ### Eliminar un usuario
   ```bash
-  [DELETE] https://api/users/{id}
+  [DELETE] https://books-api-5lk8.onrender.com/api/users/{id}
   ```
   #### Respuesta:
   ```bash
@@ -583,7 +583,7 @@ Leer este documento en [English](https://github.com/Juancamilo21/books-api/blob/
 - ### Login
 
   ```bash
-  [POST] https://api/auth/login
+  [POST] https://books-api-5lk8.onrender.com/api/auth/login
   ```
 
   ```json
@@ -607,7 +607,7 @@ Leer este documento en [English](https://github.com/Juancamilo21/books-api/blob/
 - ### Perfil
 
   ```bash
-  [GET] https://api/auth/profile
+  [GET] https://books-api-5lk8.onrender.com/api/auth/profile
   ```
 
   ```json
