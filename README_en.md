@@ -2,6 +2,9 @@
 
 Books API is a public REST API that contains information about books from various genres. Additionally, it allows you to register information about new books, update and delete the books you add. It also includes a user authentication system using JWT.
 
+### Note
+The first request may take a little more than a minute. Therefore, it is necessary to wait for the server to wake up and respond, then everything will go quickly.
+
 Read this document in [Spanish](https://github.com/Juancamilo21/books-api/blob/main/README.md) | [Swagger](https://books-api-gvh2.onrender.com/docs)
 
 ## Table of Contents
